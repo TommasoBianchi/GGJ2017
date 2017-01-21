@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour {
 		if(KeyPressed && Time.time - FirstClick > 0.2f)
 			KeyPressed = false;
 
-		gameObject.transform.position += transform.forward * speed * Time.deltaTime;
+		gameObject.transform.position += transform.up * speed * Time.deltaTime;
 		gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
 		if (!KeyPressed && Input.GetKey("space")) {
 			gameObject.transform.RotateAround(transform.position, Vector3.back, (turningRadius * Time.deltaTime));
