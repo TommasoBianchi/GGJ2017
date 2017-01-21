@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour {
     public int powerUpNumber;
 
     private List<Vector2> waterliliesPos = new List<Vector2>();
+    private List<GameObject> waterlilies = new List<GameObject>();
     private List<Vector2> powerUpPos = new List<Vector2>();
     private bool canInstantiate = true;
 
@@ -53,7 +54,7 @@ public class GameController : MonoBehaviour {
             if (canInstantiate == true)
             {
                 Vector3 Position = new Vector3(randomPosX, randomPosY, 0);
-                Instantiate(waterlily, Position, waterlily.transform.rotation);
+                waterlilies.Add(Instantiate(waterlily, Position, waterlily.transform.rotation));
             }
             canInstantiate = true;
         }      
@@ -120,5 +121,20 @@ public class GameController : MonoBehaviour {
     public List<Vector2> getWaterliliesPos()
     {
         return waterliliesPos;
+    }
+
+    private void Update()
+    {
+        for (int i = 0; i < waterliliesNumber; i++)
+        {
+            if (player.transform.position.x - waterlilies[i].transform.position.x > maxDistance)
+                waterlilies[i].GetComponent<Transform>().position = new Vector3 (waterlilies[i].GetComponent<Transform>().position.x + maxDistance * 2, waterlilies[i].GetComponent<Transform>().position.y, 0);
+            if (player.transform.position.x - waterlilies[i].transform.position.x < - maxDistance)
+                waterlilies[i].GetComponent<Transform>().position = new Vector3(waterlilies[i].GetComponent<Transform>().position.x - maxDistance * 2, waterlilies[i].GetComponent<Transform>().position.y, 0);
+            if (player.transform.position.y - waterlilies[i].transform.position.y > maxDistance)
+                waterlilies[i].GetComponent<Transform>().position = new Vector3(waterlilies[i].GetComponent<Transform>().position.x, waterlilies[i].GetComponent<Transform>().position.y + maxDistance * 2, 0);
+            if (player.transform.position.y - waterlilies[i].transform.position.y < - maxDistance)
+                waterlilies[i].GetComponent<Transform>().position = new Vector3(waterlilies[i].GetComponent<Transform>().position.x, waterlilies[i].GetComponent<Transform>().position.y - maxDistance * 2, 0);
+        }
     }
 }
