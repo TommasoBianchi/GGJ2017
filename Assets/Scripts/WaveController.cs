@@ -14,10 +14,14 @@ public class WaveController : MonoBehaviour {
 	
 	void Update ()
     {
-        CheckInput();
+        //CheckInput(); // this is only for testing
+        CheckCollisions();
+    }
 
+    void CheckCollisions()
+    {
         LinkedListNode<Wave> waveA = activeWaves.First;
-        while(waveA != null)
+        while (waveA != null)
         {
             LinkedListNode<Wave> waveB = waveA.Next;
             while (waveB != null)
@@ -26,8 +30,10 @@ public class WaveController : MonoBehaviour {
                 float maxDistance = waveA.Value.maxRadius + waveB.Value.maxRadius;
                 if (sqrDistanceBetweenCenters < maxDistance * maxDistance)
                 {
-                    //waveA.Value.CheckCollision(waveB.Value);
-                    //waveB.Value.CheckCollision(waveA.Value);
+                    bool[] waveAVertices = waveA.Value.CheckCollision(waveB.Value);
+                    bool[] waveBVertices = waveB.Value.CheckCollision(waveA.Value);
+                    waveA.Value.SetActiveVertices(waveAVertices);
+                    waveB.Value.SetActiveVertices(waveBVertices);
                 }
                 waveB = waveB.Next;
             }
@@ -35,13 +41,16 @@ public class WaveController : MonoBehaviour {
         }
     }
 
+    float lastTime = 0;
     void CheckInput()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Time.time - lastTime > 1)
         {
-            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            pos.z = 0;
+            lastTime = Time.time;
+            Vector3 pos = new Vector3(Random.Range(-10f, 10f), Random.Range(-5f, 5f), 0);
             Wave wave = (Instantiate(wavePrefab, pos, Quaternion.identity) as GameObject).GetComponent<Wave>();
+            wave.speed = Random.Range(0.5f, 1.5f);
+            wave.maxRadius = wave.speed * 10;
             wave.name = "Wave" + activeWaves.Count;
             wave.SetWaveController(this);
         }
@@ -55,5 +64,15 @@ public class WaveController : MonoBehaviour {
     public void RemoveWave(LinkedListNode<Wave> wave)
     {
         activeWaves.Remove(wave);
+    }
+
+    public void SpawnWave(Vector3 position, float speed, float maxRadius, float startingRadius = 0.1f)
+    {
+        Wave wave = (Instantiate(wavePrefab, position, Quaternion.identity) as GameObject).GetComponent<Wave>();
+        wave.speed = speed;
+        wave.maxRadius = maxRadius;
+        wave.startingRadius = startingRadius;
+        wave.name = "Wave" + activeWaves.Count;
+        wave.SetWaveController(this);
     }
 }
