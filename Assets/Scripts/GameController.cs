@@ -27,9 +27,6 @@ public class GameController : MonoBehaviour {
         SpawnPowerUp();
     }
 
-
-
-
     private void SpawnWaterlilies()
     {
         for (int i=0; i < waterliliesNumber; i++)
@@ -61,9 +58,6 @@ public class GameController : MonoBehaviour {
             canInstantiate = true;
         }      
     }
-
-
-
 
     private void SpawnPowerUp()
     {
@@ -121,5 +115,10 @@ public class GameController : MonoBehaviour {
             }
             canInstantiate = true;
         }
+    }
+
+    public List<Vector2> getWaterliliesPos()
+    {
+        return waterliliesPos;
     }
 }

@@ -134,7 +134,32 @@ public class Wave : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    public bool[] CheckCollision(Wave otherWave)
+    public void CheckCollisionsWithWaterlilies(Vector2[] waterliliesPositions, float waterliliesRadius)
+    {
+        float epsilon = 0.3f;
+        float maxDistance = currentRadius + waterliliesRadius + epsilon;
+
+        Vector3[] thisPoints = positions;
+
+        for (int i = 0; i < waterliliesPositions.Length; i++)
+        {
+            float sqrDistance = SqrDistanceBetweenVectors2D(transform.position, (Vector3)waterliliesPositions[i]);
+            if(sqrDistance < maxDistance * maxDistance)
+            {
+                for (int j = 0; j < thisPoints.Length; j++)
+                {
+                    if (activeVertices[j] == false) continue;
+                    sqrDistance = SqrDistanceBetweenVectors2D(thisPoints[j], (Vector3)waterliliesPositions[i]);
+                    if(sqrDistance - waterliliesRadius * waterliliesRadius < epsilon * epsilon)
+                    {
+                        activeVertices[j] = false;
+                    }
+                }
+            }
+        }
+    }
+
+    public bool[] CheckCollisionWithWave(Wave otherWave)
     {
         float epsilon = 0.3f;
 
