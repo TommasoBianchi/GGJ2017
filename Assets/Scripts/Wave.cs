@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Wave : MonoBehaviour {
@@ -26,17 +27,27 @@ public class Wave : MonoBehaviour {
         if (currentRadius > maxRadius)
             Die();
 
-        Generate();
+        //Generate();
 	}
 
     public void Move(float deltaTime)
     {
         currentRadius += speed * deltaTime;
+
+        int numberOfPoints = lineRenderer.numPositions;
+        Vector3[] positions = new Vector3[numberOfPoints];
+        lineRenderer.GetPositions(positions);
+        for (int i = 0; i < numberOfPoints; i++)
+        {
+            positions[i] += new Vector3(Mathf.Cos(2 * Mathf.PI / (numberOfPoints - 1) * i),
+                Mathf.Sin(2 * Mathf.PI / (numberOfPoints - 1) * i), 0) * speed * deltaTime;
+        }
+        lineRenderer.SetPositions(positions);
     }
 
     void Generate()
     {
-        int numberOfPoints = Mathf.CeilToInt(Mathf.Max(currentRadius * 10, 50));
+        int numberOfPoints = 100;// Mathf.CeilToInt(Mathf.Max(currentRadius * 10, 50));
         Vector3[] positions = new Vector3[numberOfPoints + 1];
         for (int i = 0; i <= numberOfPoints; i++)
         {
@@ -67,13 +78,13 @@ public class Wave : MonoBehaviour {
     public void CheckCollision(Wave otherWave)
     {
         float epsilon = 0.01f;
-
-        List<Vector3> thisNextPoints = new List<Vector3>(lineRenderer.numPositions);
-        List<Vector3> otherNextPoints = new List<Vector3>(otherWave.lineRenderer.numPositions);
+        if (lineRenderer == null) Debug.LogWarning("null!!");
         Vector3[] thisPoints = new Vector3[lineRenderer.numPositions];
         Vector3[] otherPoints = new Vector3[otherWave.lineRenderer.numPositions];
         lineRenderer.GetPositions(thisPoints);
         otherWave.lineRenderer.GetPositions(otherPoints);
+        List<Vector3> thisNextPoints = thisPoints.ToList();
+        List<Vector3> otherNextPoints = otherPoints.ToList();
 
         for (int i = 0; i < thisPoints.Length; i++)
         {
@@ -82,7 +93,8 @@ public class Wave : MonoBehaviour {
                 float sqrDistance = (thisPoints[i] - otherPoints[j]).sqrMagnitude;
                 if (sqrDistance > epsilon * epsilon)
                 {
-                    thisNextPoints.Add(thisPoints[i]);
+                    thisNextPoints.Remove(thisPoints[i]);
+                    otherNextPoints.Remove(otherPoints[j]);
                 }
             }
         }

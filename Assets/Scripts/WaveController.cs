@@ -30,7 +30,7 @@ public class WaveController : MonoBehaviour {
                 }
                 waveB = waveB.Next;
             }
-            waveB = waveB.Next;
+            waveA = waveA.Next;
         }
     }
 
