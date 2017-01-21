@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
 
 	public float speed;
 	public AudioController audioController;
+	public GameObject DeathPanel;
 	public float turningSpeed;
 	public float turningRadius;
 	public bool hasShield;
@@ -78,7 +79,8 @@ public class PlayerController : MonoBehaviour {
         {
             Debug.Log("crauti");
             audioController.Play(AudioController.SfxType.GameOver);
-            Debug.Break();
+			DeathPanel.SetActive(true);
+			speed = 0;
             return true;
         }
 	}

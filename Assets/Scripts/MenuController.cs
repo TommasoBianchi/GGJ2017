@@ -10,11 +10,11 @@ public class MenuController : MonoBehaviour {
 	private int count;
 	private float TimeClick = 0; 
 	public EventSystem eventSystem;
-	public GameObject[] buttons = new GameObject[3];
+	public GameObject[] buttons;
 	
 	// Use this for initialization
 	void Start () {
-		eventSystem.SetSelectedGameObject(buttons[0]);
+		//eventSystem.SetSelectedGameObject(buttons[0]);
 		count = 1;
 	}
 	
@@ -23,7 +23,7 @@ public class MenuController : MonoBehaviour {
 		if (ClickedOne && Time.time-TimeClick>0.15f) {
 			eventSystem.SetSelectedGameObject(buttons[count]);
 			count++;
-			if (count >= 3)
+			if (count >= buttons.Length)
 				count = 0;
 			ClickedOne = false;
 		}
