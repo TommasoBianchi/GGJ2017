@@ -5,6 +5,7 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour {
 
     public float SpeedBoost;
+    public AudioController audioController;
     public float powerUpTimer;
 
     private float startingTimer;
@@ -39,15 +40,19 @@ public class PowerUp : MonoBehaviour {
             case PowerUpType.Speed:
                 player.speed += SpeedBoost;
                 Used = true;
+                audioController.Play(AudioController.SfxType.Sprint);
                 break;
             case PowerUpType.Shield:
                 player.hasShield = true;
                 Used = true;
+                audioController.Play(AudioController.SfxType.Bubble);
                 break;
             case PowerUpType.Waves:
                 waveController.SpawnWave(player.transform.position + 0.1f * player.speed * player.transform.up, 12, 15, 1.5f);
+                audioController.Play(AudioController.SfxType.Wave);
                 break;
             case PowerUpType.Waterlily:
+                audioController.Play(AudioController.SfxType.Flower);
                 break;
         }
     }

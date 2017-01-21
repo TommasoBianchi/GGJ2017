@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
 	public float speed;
+	public AudioController audioSource;
 	public float turningSpeed;
 	public float turningRadius;
 	public bool hasShield;
@@ -50,6 +51,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (other.tag == "powerup")
         {
+			audioSource.Play(AudioController.SfxType.PowerUpPickup);
             currentPowerUp = other.GetComponent<PowerUp>();
             float RandomX = Random.Range(-20000, 20000);
             float RandomY = Random.Range(-20000, 20000);
@@ -60,7 +62,9 @@ public class PlayerController : MonoBehaviour {
 	void WaveTouch () {
 		if (hasShield)
 			hasShield = false;
-		else
+		else{
+			audioSource.Play(AudioController.SfxType.GameOver);
 			Debug.Break();
+		}
 	}
 }
