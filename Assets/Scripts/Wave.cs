@@ -16,6 +16,7 @@ public class Wave : MonoBehaviour {
     Vector3[] positions = new Vector3[numberOfPoints + 1];
     List<LineRenderer> lineRenderers = new List<LineRenderer>();
     Vector3 center;
+    bool canHitPlayer = true;
 
     const int numberOfPoints = 1000;
     const int minNumberOfPointsForLine = 50;
@@ -96,6 +97,7 @@ public class Wave : MonoBehaviour {
 
         float alpha = (maxRadius - currentRadius) / (maxRadius - startingRadius);
         alpha = 1 - (1 - alpha) * (1 - alpha);
+        canHitPlayer = alpha > 0.2;
         Color color = new Color(1, 1, 1, alpha);
         for (int i = 0; i < lineRenderers.Count; i++)
         {
@@ -138,6 +140,9 @@ public class Wave : MonoBehaviour {
 
     public void CheckCollisionWithPlayer(PlayerController player)
     {
+        if (!canHitPlayer)
+            return;
+
         float epsilon = 0.3f;
         float maxDistance = currentRadius + epsilon;
         Vector3 playerPosition = player.transform.position;

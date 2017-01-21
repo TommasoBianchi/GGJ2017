@@ -14,6 +14,14 @@ public class PowerUp : MonoBehaviour {
     public PowerUpType powerUpType;
     private bool Used = false;
 
+    private static WaveController waveController;
+
+    void Start()
+    {
+        if (waveController == null)
+            waveController = FindObjectOfType<WaveController>();
+    }
+
 
     private void Update ()
     {
@@ -23,6 +31,7 @@ public class PowerUp : MonoBehaviour {
 
     public void Activate(PlayerController player)
     {
+        Debug.Log(powerUpType);
         playerController = player;
         startingTimer = Time.time;
         switch (powerUpType)
@@ -36,6 +45,7 @@ public class PowerUp : MonoBehaviour {
                 Used = true;
                 break;
             case PowerUpType.Waves:
+                waveController.SpawnWave(player.transform.position + 0.1f * player.speed * player.transform.up, 12, 15, 1.5f);
                 break;
             case PowerUpType.Waterlily:
                 break;

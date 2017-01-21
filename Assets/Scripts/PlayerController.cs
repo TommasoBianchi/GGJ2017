@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		hasShield = false;	
+		hasShield = false;
 	}
 	
 	// Update is called once per frame
@@ -40,20 +40,21 @@ public class PlayerController : MonoBehaviour {
 			else {
 				if (currentPowerUp != null) {
 					currentPowerUp.Activate(this);
+                    currentPowerUp = null;
 				}
 			}
 		}		
 	}
 
-
-	void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-		if (other.tag == "powerup" ) {
-			currentPowerUp = other.GetComponent<PowerUp>();
+        if (other.tag == "powerup")
+        {
+            currentPowerUp = other.GetComponent<PowerUp>();
             float RandomX = Random.Range(-20000, 20000);
             float RandomY = Random.Range(-20000, 20000);
             other.gameObject.transform.position = new Vector3(RandomX, RandomY, 0);
-		}
+        }
     }
 
 	void WaveTouch () {
@@ -61,6 +62,5 @@ public class PlayerController : MonoBehaviour {
 			hasShield = false;
 		else
 			Debug.Break();
-
 	}
 }

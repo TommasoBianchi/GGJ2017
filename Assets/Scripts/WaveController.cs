@@ -17,7 +17,7 @@ public class WaveController : MonoBehaviour {
 	
 	void Update ()
     {
-        CheckInput(); // this is only for testing
+        //CheckInput(); // this is only for testing
         CheckCollisions();
     }
 
@@ -45,7 +45,7 @@ public class WaveController : MonoBehaviour {
             }
 
             // Check collisions with waterlilies
-            waveA.Value.CheckCollisionsWithWaterlilies(waterliliesPos, 2);
+            waveA.Value.CheckCollisionsWithWaterlilies(waterliliesPos, 1.4f);
 
             // Check collisions with the player
             waveA.Value.CheckCollisionWithPlayer(player);
@@ -81,10 +81,11 @@ public class WaveController : MonoBehaviour {
 
     public void SpawnWave(Vector3 position, float speed, float maxRadius, float startingRadius = 0.1f)
     {
+        Wave wavePrefabComponent = wavePrefab.GetComponent<Wave>();
+        wavePrefabComponent.speed = speed;
+        wavePrefabComponent.maxRadius = maxRadius;
+        wavePrefabComponent.startingRadius = startingRadius;
         Wave wave = (Instantiate(wavePrefab, position, Quaternion.identity) as GameObject).GetComponent<Wave>();
-        wave.speed = speed;
-        wave.maxRadius = maxRadius;
-        wave.startingRadius = startingRadius;
         wave.name = "Wave" + activeWaves.Count;
         wave.SetWaveController(this);
     }
