@@ -26,11 +26,12 @@ public class WaveController : MonoBehaviour {
                 float maxDistance = waveA.Value.maxRadius + waveB.Value.maxRadius;
                 if (sqrDistanceBetweenCenters < maxDistance * maxDistance)
                 {
-                    waveA.Value.CheckCollision(waveB.Value);
+                    //waveA.Value.CheckCollision(waveB.Value);
+                    //waveB.Value.CheckCollision(waveA.Value);
                 }
                 waveB = waveB.Next;
             }
-            waveB = waveB.Next;
+            waveA = waveA.Next;
         }
     }
 
@@ -41,6 +42,7 @@ public class WaveController : MonoBehaviour {
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             pos.z = 0;
             Wave wave = (Instantiate(wavePrefab, pos, Quaternion.identity) as GameObject).GetComponent<Wave>();
+            wave.name = "Wave" + activeWaves.Count;
             wave.SetWaveController(this);
         }
     }
