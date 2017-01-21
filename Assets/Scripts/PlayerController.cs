@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour {
 		if(KeyPressed && Time.time - FirstClick > 0.2f)
 			KeyPressed = false;
 
-		gameObject.transform.position += transform.forward * speed * Time.deltaTime;
+		gameObject.transform.position += transform.up * speed * Time.deltaTime;
 		gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
 		if (!KeyPressed && Input.GetKey("space")) {
 			gameObject.transform.RotateAround(transform.position, Vector3.back, (turningRadius * Time.deltaTime));
@@ -55,4 +55,12 @@ public class PlayerController : MonoBehaviour {
             other.gameObject.transform.position = new Vector3(RandomX, RandomY, 0);
 		}
     }
+
+	void WaveTouch () {
+		if (hasShield)
+			hasShield = false;
+		else
+			Debug.Break();
+
+	}
 }

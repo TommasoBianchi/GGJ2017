@@ -15,6 +15,7 @@ public class Wave : MonoBehaviour {
     bool[] activeVertices = new bool[numberOfPoints + 1];
     Vector3[] positions = new Vector3[numberOfPoints + 1];
     List<LineRenderer> lineRenderers = new List<LineRenderer>();
+    Vector3 center;
 
     const int numberOfPoints = 1000;
     const int minNumberOfPointsForLine = 50;
@@ -22,6 +23,7 @@ public class Wave : MonoBehaviour {
 	void Start () {
         currentRadius = startingRadius;
         lineRenderers.Add(GetComponent<LineRenderer>());
+        center = transform.position;
 
         for (int i = 0; i < activeVertices.Length; i++)
         {
@@ -63,7 +65,7 @@ public class Wave : MonoBehaviour {
         for (int i = 0; i <= numberOfPoints; i++)
         {
             positions[i] = (new Vector3(Mathf.Cos(2 * Mathf.PI / numberOfPoints * i),
-                Mathf.Sin(2 * Mathf.PI / numberOfPoints * i), 0) * currentRadius + transform.position);
+                Mathf.Sin(2 * Mathf.PI / numberOfPoints * i), 0) * currentRadius + center);
             if (activeVertices[i])
             {                
                 positionsToShow.Add(positions[i]);
@@ -134,22 +136,43 @@ public class Wave : MonoBehaviour {
         Destroy(gameObject);
     }
 
+    public void CheckCollisionWithPlayer(PlayerController player)
+    {
+        float epsilon = 0.3f;
+        float maxDistance = currentRadius + epsilon;
+        Vector3 playerPosition = player.transform.position;
+
+        Vector3[] thisPoints = positions;
+
+        float sqrDistance = SqrDistanceBetweenVectors2D(center, playerPosition);
+        if (sqrDistance < maxDistance * maxDistance)
+        {
+            for (int j = 0; j < positions.Length; j++)
+            {
+                if (activeVertices[j] == false) continue;
+                sqrDistance = SqrDistanceBetweenVectors2D(positions[j], playerPosition);
+                if (sqrDistance < epsilon * epsilon)
+                {
+                    player.speed = 0;
+                }
+            }
+        }
+    }
+
     public void CheckCollisionsWithWaterlilies(Vector2[] waterliliesPositions, float waterliliesRadius)
     {
         float epsilon = 0.3f;
         float maxDistance = currentRadius + waterliliesRadius + epsilon;
 
-        Vector3[] thisPoints = positions;
-
         for (int i = 0; i < waterliliesPositions.Length; i++)
         {
-            float sqrDistance = SqrDistanceBetweenVectors2D(transform.position, (Vector3)waterliliesPositions[i]);
+            float sqrDistance = SqrDistanceBetweenVectors2D(center, (Vector3)waterliliesPositions[i]);
             if(sqrDistance < maxDistance * maxDistance)
             {
-                for (int j = 0; j < thisPoints.Length; j++)
+                for (int j = 0; j < positions.Length; j++)
                 {
                     if (activeVertices[j] == false) continue;
-                    sqrDistance = SqrDistanceBetweenVectors2D(thisPoints[j], (Vector3)waterliliesPositions[i]);
+                    sqrDistance = SqrDistanceBetweenVectors2D(positions[j], (Vector3)waterliliesPositions[i]);
                     if(sqrDistance - waterliliesRadius * waterliliesRadius < epsilon * epsilon)
                     {
                         activeVertices[j] = false;
@@ -162,9 +185,7 @@ public class Wave : MonoBehaviour {
     public bool[] CheckCollisionWithWave(Wave otherWave)
     {
         float epsilon = 0.3f;
-
-        Vector3[] thisPoints = positions;
-        Vector3[] otherPoints = otherWave.positions;
+        
         bool[] nextActiveVertices = new bool[numberOfPoints + 1];
         bool[] otherNextActiveVertices = new bool[numberOfPoints + 1];
 
@@ -174,21 +195,21 @@ public class Wave : MonoBehaviour {
             otherNextActiveVertices[i] = otherWave.activeVertices[i];
         }
 
-        float sqrDistanceBetweenCenters = SqrDistanceBetweenVectors2D(transform.position, otherWave.transform.position);
+        float sqrDistanceBetweenCenters = SqrDistanceBetweenVectors2D(center, otherWave.center);
         float maxDistance = currentRadius + otherWave.currentRadius + epsilon;
         if (sqrDistanceBetweenCenters > maxDistance * maxDistance)
             return nextActiveVertices;
 
-        for (int i = 0; i < thisPoints.Length; i++)
+        for (int i = 0; i < positions.Length; i++)
         {
             if (activeVertices[i] == false) continue;
-            float sqrDistance = SqrDistanceBetweenVectors2D(thisPoints[i], otherWave.transform.position);
+            float sqrDistance = SqrDistanceBetweenVectors2D(positions[i], otherWave.center);
             if (Mathf.Abs(sqrDistance - otherWave.currentRadius * otherWave.currentRadius) < epsilon * epsilon * 2)
             {
-                for (int j = 0; j < otherPoints.Length; j++)
+                for (int j = 0; j < otherWave.positions.Length; j++)
                 {
                     if (otherWave.activeVertices[j] == false) continue;
-                    sqrDistance = SqrDistanceBetweenVectors2D(thisPoints[i], otherPoints[j]);
+                    sqrDistance = SqrDistanceBetweenVectors2D(positions[i], otherWave.positions[j]);
                     if (sqrDistance < epsilon * epsilon)
                     {
                         nextActiveVertices[i] = false;

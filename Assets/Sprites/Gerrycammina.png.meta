@@ -1,0 +1,790 @@
+fileFormatVersion: 2
+guid: 0fe5ee5614da47745a40ba8cf2572356
+timeCreated: 1484997229
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Gerrycammina_0
+    21300002: Gerrycammina_1
+    21300004: Gerrycammina_2
+    21300006: Gerrycammina_3
+    21300008: Gerrycammina_4
+    21300010: Gerrycammina_5
+    21300012: Gerrycammina_6
+    21300014: Gerrycammina_7
+    21300016: Gerrycammina_8
+    21300018: Gerrycammina_9
+    21300020: Gerrycammina_10
+    21300022: Gerrycammina_11
+    21300024: Gerrycammina_12
+    21300026: Gerrycammina_13
+    21300028: Gerrycammina_14
+    21300030: Gerrycammina_15
+    21300032: Gerrycammina_16
+    21300034: Gerrycammina_17
+    21300036: Gerrycammina_18
+    21300038: Gerrycammina_19
+    21300040: Gerrycammina_20
+    21300042: Gerrycammina_21
+    21300044: Gerrycammina_22
+    21300046: Gerrycammina_23
+    21300048: Gerrycammina_24
+    21300050: Gerrycammina_25
+    21300052: Gerrycammina_26
+    21300054: Gerrycammina_27
+    21300056: Gerrycammina_28
+    21300058: Gerrycammina_29
+    21300060: Gerrycammina_30
+    21300062: Gerrycammina_31
+    21300064: Gerrycammina_32
+    21300066: Gerrycammina_33
+    21300068: Gerrycammina_34
+    21300070: Gerrycammina_35
+    21300072: Gerrycammina_36
+    21300074: Gerrycammina_37
+    21300076: Gerrycammina_38
+    21300078: Gerrycammina_39
+    21300080: Gerrycammina_40
+    21300082: Gerrycammina_41
+    21300084: Gerrycammina_42
+    21300086: Gerrycammina_43
+    21300088: Gerrycammina_44
+    21300090: Gerrycammina_45
+    21300092: Gerrycammina_46
+    21300094: Gerrycammina_47
+    21300096: Gerrycammina_48
+    21300098: Gerrycammina_49
+    21300100: Gerrycammina_50
+    21300102: Gerrycammina_51
+    21300104: Gerrycammina_52
+    21300106: Gerrycammina_53
+    21300108: Gerrycammina_54
+    21300110: Gerrycammina_55
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 512
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Gerrycammina_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3132
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_1
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 3132
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_2
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 3132
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_3
+      rect:
+        serializedVersion: 2
+        x: 1566
+        y: 3132
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_4
+      rect:
+        serializedVersion: 2
+        x: 2088
+        y: 3132
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_5
+      rect:
+        serializedVersion: 2
+        x: 2610
+        y: 3132
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_6
+      rect:
+        serializedVersion: 2
+        x: 3132
+        y: 3132
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_7
+      rect:
+        serializedVersion: 2
+        x: 3654
+        y: 3132
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2610
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_9
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 2610
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_10
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 2610
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_11
+      rect:
+        serializedVersion: 2
+        x: 1566
+        y: 2610
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_12
+      rect:
+        serializedVersion: 2
+        x: 2088
+        y: 2610
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_13
+      rect:
+        serializedVersion: 2
+        x: 2610
+        y: 2610
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_14
+      rect:
+        serializedVersion: 2
+        x: 3132
+        y: 2610
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2088
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_17
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 2088
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_18
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 2088
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_19
+      rect:
+        serializedVersion: 2
+        x: 1566
+        y: 2088
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_20
+      rect:
+        serializedVersion: 2
+        x: 2088
+        y: 2088
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_21
+      rect:
+        serializedVersion: 2
+        x: 2610
+        y: 2088
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_22
+      rect:
+        serializedVersion: 2
+        x: 3132
+        y: 2088
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1566
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_25
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 1566
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_26
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 1566
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_27
+      rect:
+        serializedVersion: 2
+        x: 1566
+        y: 1566
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_28
+      rect:
+        serializedVersion: 2
+        x: 2088
+        y: 1566
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_29
+      rect:
+        serializedVersion: 2
+        x: 2610
+        y: 1566
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_30
+      rect:
+        serializedVersion: 2
+        x: 3132
+        y: 1566
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1044
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_33
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 1044
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_34
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 1044
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_35
+      rect:
+        serializedVersion: 2
+        x: 1566
+        y: 1044
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_36
+      rect:
+        serializedVersion: 2
+        x: 2088
+        y: 1044
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_37
+      rect:
+        serializedVersion: 2
+        x: 2610
+        y: 1044
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_38
+      rect:
+        serializedVersion: 2
+        x: 3132
+        y: 1044
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 522
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_41
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 522
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_42
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 522
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_43
+      rect:
+        serializedVersion: 2
+        x: 1566
+        y: 522
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_44
+      rect:
+        serializedVersion: 2
+        x: 2088
+        y: 522
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_45
+      rect:
+        serializedVersion: 2
+        x: 2610
+        y: 522
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_46
+      rect:
+        serializedVersion: 2
+        x: 3132
+        y: 522
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_49
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 0
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_50
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 0
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_51
+      rect:
+        serializedVersion: 2
+        x: 1566
+        y: 0
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_52
+      rect:
+        serializedVersion: 2
+        x: 2088
+        y: 0
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_53
+      rect:
+        serializedVersion: 2
+        x: 2610
+        y: 0
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gerrycammina_54
+      rect:
+        serializedVersion: 2
+        x: 3132
+        y: 0
+        width: 522
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

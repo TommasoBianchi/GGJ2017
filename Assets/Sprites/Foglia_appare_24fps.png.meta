@@ -1,0 +1,378 @@
+fileFormatVersion: 2
+guid: be52545ec661e154e95fa2e4638d9403
+timeCreated: 1484997672
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Foglia_appare_24fps_4
+    21300002: Foglia_appare_24fps_5
+    21300004: Foglia_appare_24fps_6
+    21300006: Foglia_appare_24fps_7
+    21300008: Foglia_appare_24fps_8
+    21300010: Foglia_appare_24fps_9
+    21300012: Foglia_appare_24fps_10
+    21300014: Foglia_appare_24fps_11
+    21300016: Foglia_appare_24fps_12
+    21300018: Foglia_appare_24fps_13
+    21300020: Foglia_appare_24fps_14
+    21300022: Foglia_appare_24fps_15
+    21300024: Foglia_appare_24fps_16
+    21300026: Foglia_appare_24fps_17
+    21300028: Foglia_appare_24fps_18
+    21300030: Foglia_appare_24fps_19
+    21300032: Foglia_appare_24fps_20
+    21300034: Foglia_appare_24fps_21
+    21300036: Foglia_appare_24fps_22
+    21300038: Foglia_appare_24fps_23
+    21300040: Foglia_appare_24fps_24
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 512
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Foglia_appare_24fps_4
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 2088
+        width: 530
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Foglia_appare_24fps_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1566
+        width: 530
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Foglia_appare_24fps_6
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 1566
+        width: 530
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Foglia_appare_24fps_7
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 1566
+        width: 530
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Foglia_appare_24fps_8
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 1566
+        width: 530
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Foglia_appare_24fps_9
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 1566
+        width: 530
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Foglia_appare_24fps_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1044
+        width: 530
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Foglia_appare_24fps_11
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 1044
+        width: 530
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Foglia_appare_24fps_12
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 1044
+        width: 530
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Foglia_appare_24fps_13
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 1044
+        width: 530
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Foglia_appare_24fps_14
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 1044
+        width: 530
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Foglia_appare_24fps_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 522
+        width: 530
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Foglia_appare_24fps_16
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 522
+        width: 530
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Foglia_appare_24fps_17
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 522
+        width: 530
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Foglia_appare_24fps_18
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 522
+        width: 530
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Foglia_appare_24fps_19
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 522
+        width: 530
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Foglia_appare_24fps_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 530
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Foglia_appare_24fps_21
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 0
+        width: 530
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Foglia_appare_24fps_22
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 0
+        width: 530
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Foglia_appare_24fps_23
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 0
+        width: 530
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Foglia_appare_24fps_24
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 0
+        width: 530
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
