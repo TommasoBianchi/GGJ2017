@@ -10,13 +10,14 @@ public class PowerUp : MonoBehaviour {
     private float startingTimer;
     private PlayerController playerController;
 
-    enum PowerUpType { Speed, Shield, Waves, Waterlily };
-    PowerUpType powerUpType;
+    public enum PowerUpType { Speed, Shield, Waves, Waterlily };
+    public PowerUpType powerUpType;
+    private bool Used = false;
 
 
     private void Update ()
     {
-        if (Time.time >= startingTimer + powerUpTimer)
+        if (Time.time >= startingTimer + powerUpTimer && Used)
             Deactivate(playerController);
     }
 
@@ -28,9 +29,11 @@ public class PowerUp : MonoBehaviour {
         {
             case PowerUpType.Speed:
                 player.speed += SpeedBoost;
+                Used = true;
                 break;
             case PowerUpType.Shield:
                 player.hasShield = true;
+                Used = true;
                 break;
             case PowerUpType.Waves:
                 break;

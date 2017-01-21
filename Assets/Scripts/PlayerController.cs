@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
 	public float turningRadius;
 	public bool hasShield;
 
-	private GameObject currentPowerUp;
+	private PowerUp currentPowerUp;
 	private bool KeyPressed = false;
 	private float FirstClick = 0;
 	private int count = 0;
@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour {
 			KeyPressed = false;
 
 		gameObject.transform.position += transform.forward * speed * Time.deltaTime;
+		gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
 		if (!KeyPressed && Input.GetKey("space")) {
 			gameObject.transform.RotateAround(transform.position, Vector3.back, (turningRadius * Time.deltaTime));
 		}
@@ -37,8 +38,21 @@ public class PlayerController : MonoBehaviour {
 				FirstClick = Time.time;
 			}
 			else {
-				PowerUp.Activate(this);
+				if (currentPowerUp != null) {
+					currentPowerUp.Activate(this);
+				}
+				Debug.Log("doppio");
 			}
 		}		
 	}
+
+
+	void OnTriggerEnter(Collider other)
+    {
+		Debug.Log("dkes");
+		if (other.tag == "powerup" ) {
+			currentPowerUp = other.GetComponent<PowerUp>();
+			other.gameObject.GetComponent<Renderer>().enabled = false;
+		}
+    }
 }
