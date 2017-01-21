@@ -168,6 +168,8 @@ public class GameController : MonoBehaviour {
                 waterlilies[i].GetComponent<Transform>().position = new Vector3(waterlilies[i].GetComponent<Transform>().position.x, waterlilies[i].GetComponent<Transform>().position.y - maxDistance * 2, 0);
                 waterliliesPos[i] = new Vector2(waterliliesPos[i].x, waterliliesPos[i].y - maxDistance * 2);
             }
+
+            waterlilies[i].GetComponent<Collider2D>().enabled = waterlilies[i].GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Idle");
         }
 
         for (int i = 0; i < powerUpNumber; i++)
