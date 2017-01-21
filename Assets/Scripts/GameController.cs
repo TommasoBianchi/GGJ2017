@@ -62,6 +62,7 @@ public class GameController : MonoBehaviour {
                 Vector3 Position = new Vector3(randomPosX, randomPosY, 0);
                 Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0, 360f));
                 waterlilies.Add(Instantiate(waterlily, Position, randomRotation));
+                waterlilies[waterlilies.Count - 1].GetComponent<Animator>().SetFloat("Speed", Random.Range(0.2f, 2f));
             }
             canInstantiate = true;
         }
