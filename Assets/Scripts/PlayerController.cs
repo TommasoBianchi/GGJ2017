@@ -41,7 +41,6 @@ public class PlayerController : MonoBehaviour {
 				if (currentPowerUp != null) {
 					currentPowerUp.Activate(this);
 				}
-				Debug.Log("doppio");
 			}
 		}		
 	}
@@ -49,10 +48,11 @@ public class PlayerController : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
     {
-		Debug.Log("dkes");
 		if (other.tag == "powerup" ) {
 			currentPowerUp = other.GetComponent<PowerUp>();
-			other.gameObject.GetComponent<Renderer>().enabled = false;
+            float RandomX = Random.Range(-20000, 20000);
+            float RandomY = Random.Range(-20000, 20000);
+            other.gameObject.transform.position = new Vector3(RandomX, RandomY, 0);
 		}
     }
 }

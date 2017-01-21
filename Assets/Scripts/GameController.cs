@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour {
     private List<Vector2> waterliliesPos = new List<Vector2>();
     private List<GameObject> waterlilies = new List<GameObject>();
     private List<Vector2> powerUpPos = new List<Vector2>();
+    private List<GameObject> powerUps = new List<GameObject>();
     private bool canInstantiate = true;
 
 
@@ -30,6 +31,8 @@ public class GameController : MonoBehaviour {
 
     private void SpawnWaterlilies()
     {
+        GameObject waterliliesGroup = new GameObject("waterliliesGroup");
+        
         for (int i=0; i < waterliliesNumber; i++)
         {
             waterliliesPos.Add(new Vector2(0, 0));
@@ -57,11 +60,17 @@ public class GameController : MonoBehaviour {
                 waterlilies.Add(Instantiate(waterlily, Position, waterlily.transform.rotation));
             }
             canInstantiate = true;
-        }      
+        }
+        for (int i = 0; i < waterliliesNumber; i++)
+        {
+            waterlilies[i].transform.parent = waterliliesGroup.transform;
+        }
     }
 
     private void SpawnPowerUp()
     {
+        GameObject powerUpGroup = new GameObject("powerUpGroup");
+
         for (int i = 0; i < powerUpNumber; i++)
         {
             powerUpPos.Add(new Vector2(0, 0));
@@ -100,21 +109,25 @@ public class GameController : MonoBehaviour {
                 int r = Random.Range(0, 4);
                 switch (r)
                 {
-                    case 0:                   
-                        Instantiate(powerUpShield, Position, powerUpShield.transform.rotation);
+                    case 0:
+                        powerUps.Add(Instantiate(powerUpShield, Position, powerUpShield.transform.rotation));
                         break;
                     case 1:
-                        Instantiate(powerUpSpeed, Position, powerUpSpeed.transform.rotation);
+                        powerUps.Add(Instantiate(powerUpSpeed, Position, powerUpSpeed.transform.rotation));
                         break;
                     case 2:
-                        Instantiate(powerUpWaterlily, Position, powerUpWaterlily.transform.rotation);
+                        powerUps.Add(Instantiate(powerUpWaterlily, Position, powerUpWaterlily.transform.rotation));
                         break;
                     case 3:
-                        Instantiate(powerUpWaves, Position, powerUpWaves.transform.rotation);
+                        powerUps.Add(Instantiate(powerUpWaves, Position, powerUpWaves.transform.rotation));
                         break;
                 }
             }
-            canInstantiate = true;
+            canInstantiate = true;           
+        }
+        for (int i = 0; i < powerUpNumber; i++)
+        {
+            powerUps[i].transform.parent = powerUpGroup.transform;
         }
     }
 
@@ -135,6 +148,18 @@ public class GameController : MonoBehaviour {
                 waterlilies[i].GetComponent<Transform>().position = new Vector3(waterlilies[i].GetComponent<Transform>().position.x, waterlilies[i].GetComponent<Transform>().position.y + maxDistance * 2, 0);
             if (player.transform.position.y - waterlilies[i].transform.position.y < - maxDistance)
                 waterlilies[i].GetComponent<Transform>().position = new Vector3(waterlilies[i].GetComponent<Transform>().position.x, waterlilies[i].GetComponent<Transform>().position.y - maxDistance * 2, 0);
+        }
+
+        for (int i = 0; i < powerUpNumber; i++)
+        {
+            if (player.transform.position.x - powerUps[i].transform.position.x > maxDistance)
+                powerUps[i].GetComponent<Transform>().position = new Vector3(player.GetComponent<Transform>().position.x + maxDistance , powerUps[i].GetComponent<Transform>().position.y, 0);
+            if (player.transform.position.x - powerUps[i].transform.position.x < -maxDistance)
+                powerUps[i].GetComponent<Transform>().position = new Vector3(player.GetComponent<Transform>().position.x - maxDistance , powerUps[i].GetComponent<Transform>().position.y, 0);
+            if (player.transform.position.y - powerUps[i].transform.position.y > maxDistance)
+                powerUps[i].GetComponent<Transform>().position = new Vector3(powerUps[i].GetComponent<Transform>().position.x, player.GetComponent<Transform>().position.y + maxDistance, 0);
+            if (player.transform.position.y - powerUps[i].transform.position.y < -maxDistance)
+                powerUps[i].GetComponent<Transform>().position = new Vector3(powerUps[i].GetComponent<Transform>().position.x, player.GetComponent<Transform>().position.y - maxDistance, 0);
         }
     }
 }

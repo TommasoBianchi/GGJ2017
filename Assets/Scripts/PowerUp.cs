@@ -44,6 +44,7 @@ public class PowerUp : MonoBehaviour {
 
     private void Deactivate(PlayerController player)
     {
+        Used = false;
         switch (powerUpType)
         {
             case PowerUpType.Speed:
@@ -56,7 +57,6 @@ public class PowerUp : MonoBehaviour {
                 break;
             case PowerUpType.Waterlily:
                 break;
-        }
-        Destroy(gameObject);
+        }        
     }
 }
