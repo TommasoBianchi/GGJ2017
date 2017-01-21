@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
-    public GameObject waterlily;
+    public GameObject[] obstaclesPrefabs;
     public GameObject powerUpShield;
     public GameObject powerUpSpeed;
     public GameObject powerUpWaterlily;
@@ -61,7 +61,7 @@ public class GameController : MonoBehaviour {
             {
                 Vector3 Position = new Vector3(randomPosX, randomPosY, 0);
                 Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0, 360f));
-                waterlilies.Add(Instantiate(waterlily, Position, randomRotation));
+                waterlilies.Add(Instantiate(obstaclesPrefabs[Random.Range(0, obstaclesPrefabs.Length)], Position, randomRotation));
                 waterlilies[waterlilies.Count - 1].GetComponent<Animator>().SetFloat("Speed", Random.Range(0.2f, 2f));
             }
             canInstantiate = true;
@@ -187,7 +187,7 @@ public class GameController : MonoBehaviour {
     public void SpawnWaterlily(Vector3 pos)
     {
         Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0, 360f));
-        GameObject waterlilyObj = Instantiate(waterlily, player.transform.position, randomRotation) as GameObject;
+        GameObject waterlilyObj = Instantiate(obstaclesPrefabs[Random.Range(0, obstaclesPrefabs.Length)], player.transform.position, randomRotation) as GameObject;
         waterlilies.Add(waterlilyObj);
         waterliliesPos.Add(waterlilyObj.transform.position);        
     }
