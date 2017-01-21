@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: be52545ec661e154e95fa2e4638d9403
-timeCreated: 1484998306
+timeCreated: 1484997672
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -87,6 +87,14 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -94,10 +102,10 @@ TextureImporter:
       name: Foglia_appare_24fps_4
       rect:
         serializedVersion: 2
-        x: 2068
-        y: 2098
-        width: 512
-        height: 512
+        x: 2120
+        y: 2088
+        width: 530
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -108,9 +116,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1581
-        width: 512
-        height: 512
+        y: 1566
+        width: 530
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,10 +128,10 @@ TextureImporter:
       name: Foglia_appare_24fps_6
       rect:
         serializedVersion: 2
-        x: 517
-        y: 1581
-        width: 512
-        height: 512
+        x: 530
+        y: 1566
+        width: 530
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,10 +141,10 @@ TextureImporter:
       name: Foglia_appare_24fps_7
       rect:
         serializedVersion: 2
-        x: 1034
-        y: 1581
-        width: 512
-        height: 512
+        x: 1060
+        y: 1566
+        width: 530
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,10 +154,10 @@ TextureImporter:
       name: Foglia_appare_24fps_8
       rect:
         serializedVersion: 2
-        x: 1551
-        y: 1581
-        width: 512
-        height: 512
+        x: 1590
+        y: 1566
+        width: 530
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,10 +167,10 @@ TextureImporter:
       name: Foglia_appare_24fps_9
       rect:
         serializedVersion: 2
-        x: 2068
-        y: 1581
-        width: 512
-        height: 512
+        x: 2120
+        y: 1566
+        width: 530
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,9 +181,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1064
-        width: 512
-        height: 512
+        y: 1044
+        width: 530
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,10 +193,10 @@ TextureImporter:
       name: Foglia_appare_24fps_11
       rect:
         serializedVersion: 2
-        x: 517
-        y: 1064
-        width: 512
-        height: 512
+        x: 530
+        y: 1044
+        width: 530
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -198,10 +206,10 @@ TextureImporter:
       name: Foglia_appare_24fps_12
       rect:
         serializedVersion: 2
-        x: 1034
-        y: 1064
-        width: 512
-        height: 512
+        x: 1060
+        y: 1044
+        width: 530
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,10 +219,10 @@ TextureImporter:
       name: Foglia_appare_24fps_13
       rect:
         serializedVersion: 2
-        x: 1551
-        y: 1064
-        width: 512
-        height: 512
+        x: 1590
+        y: 1044
+        width: 530
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,10 +232,10 @@ TextureImporter:
       name: Foglia_appare_24fps_14
       rect:
         serializedVersion: 2
-        x: 2068
-        y: 1064
-        width: 512
-        height: 512
+        x: 2120
+        y: 1044
+        width: 530
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -238,9 +246,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 547
-        width: 512
-        height: 512
+        y: 522
+        width: 530
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,10 +258,10 @@ TextureImporter:
       name: Foglia_appare_24fps_16
       rect:
         serializedVersion: 2
-        x: 517
-        y: 547
-        width: 512
-        height: 512
+        x: 530
+        y: 522
+        width: 530
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,10 +271,10 @@ TextureImporter:
       name: Foglia_appare_24fps_17
       rect:
         serializedVersion: 2
-        x: 1034
-        y: 547
-        width: 512
-        height: 512
+        x: 1060
+        y: 522
+        width: 530
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -276,10 +284,10 @@ TextureImporter:
       name: Foglia_appare_24fps_18
       rect:
         serializedVersion: 2
-        x: 1551
-        y: 547
-        width: 512
-        height: 512
+        x: 1590
+        y: 522
+        width: 530
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,10 +297,10 @@ TextureImporter:
       name: Foglia_appare_24fps_19
       rect:
         serializedVersion: 2
-        x: 2068
-        y: 547
-        width: 512
-        height: 512
+        x: 2120
+        y: 522
+        width: 530
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -303,9 +311,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 30
-        width: 512
-        height: 512
+        y: 0
+        width: 530
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -315,10 +323,10 @@ TextureImporter:
       name: Foglia_appare_24fps_21
       rect:
         serializedVersion: 2
-        x: 517
-        y: 30
-        width: 512
-        height: 512
+        x: 530
+        y: 0
+        width: 530
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -328,10 +336,10 @@ TextureImporter:
       name: Foglia_appare_24fps_22
       rect:
         serializedVersion: 2
-        x: 1034
-        y: 30
-        width: 512
-        height: 512
+        x: 1060
+        y: 0
+        width: 530
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -341,10 +349,10 @@ TextureImporter:
       name: Foglia_appare_24fps_23
       rect:
         serializedVersion: 2
-        x: 1551
-        y: 30
-        width: 512
-        height: 512
+        x: 1590
+        y: 0
+        width: 530
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -354,10 +362,10 @@ TextureImporter:
       name: Foglia_appare_24fps_24
       rect:
         serializedVersion: 2
-        x: 2068
-        y: 30
-        width: 512
-        height: 512
+        x: 2120
+        y: 0
+        width: 530
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
