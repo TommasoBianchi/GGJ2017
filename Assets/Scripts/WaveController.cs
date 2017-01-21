@@ -79,7 +79,7 @@ public class WaveController : MonoBehaviour {
         activeWaves.Remove(wave);
     }
 
-    public void SpawnWave(Vector3 position, float speed, float maxRadius, float startingRadius = 0.1f)
+    public void SpawnWave(Vector3 position, float speed, float maxRadius, float startingRadius = 0.1f, System.Func<bool> canSimulate = null)
     {
         Wave wavePrefabComponent = wavePrefab.GetComponent<Wave>();
         wavePrefabComponent.speed = speed;
@@ -88,5 +88,9 @@ public class WaveController : MonoBehaviour {
         Wave wave = (Instantiate(wavePrefab, position, Quaternion.identity) as GameObject).GetComponent<Wave>();
         wave.name = "Wave" + activeWaves.Count;
         wave.SetWaveController(this);
+        if (canSimulate == null)
+            wave.canStartSimulateWave = () => true;
+        else
+            wave.canStartSimulateWave = canSimulate;
     }
 }

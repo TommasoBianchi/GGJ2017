@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     public GameObject[] obstaclesPrefabs;
+    public GameObject rockPrefab;
     public GameObject powerUpShield;
     public GameObject powerUpSpeed;
     public GameObject powerUpWaterlily;
@@ -208,7 +209,12 @@ public class GameController : MonoBehaviour {
             offset = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), 0);
         float waveSpeed = Random.Range(0.5f, 2f);
         float maxRadius = (3f - waveSpeed) * 5;
-        waveController.SpawnWave(player.transform.position + offset, waveSpeed, maxRadius);
+
+        Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0, 360f));
+        GameObject rock = Instantiate(rockPrefab, player.transform.position + offset, randomRotation) as GameObject;
+        Animator rockAnimator = rock.GetComponent<Animator>();
+
+        waveController.SpawnWave(player.transform.position + offset, waveSpeed, maxRadius, canSimulate: () => rockAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f);
         timeToSpawnAWave = Time.time + Random.Range(0.5f, 1.5f);
     }
 
