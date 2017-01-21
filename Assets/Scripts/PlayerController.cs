@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
@@ -8,6 +9,8 @@ public class PlayerController : MonoBehaviour {
 	public float turningSpeed;
 	public float turningRadius;
 	public bool hasShield;
+
+    public Image powerupIcon;
 
 	private PowerUp currentPowerUp;
 	private bool KeyPressed = false;
@@ -40,6 +43,7 @@ public class PlayerController : MonoBehaviour {
 			else {
 				if (currentPowerUp != null) {
 					currentPowerUp.Activate(this);
+                    powerupIcon.GetComponentInParent<Animator>().SetBool("PanelUp", false);
                     currentPowerUp = null;
 				}
 			}
@@ -51,6 +55,8 @@ public class PlayerController : MonoBehaviour {
         if (other.tag == "powerup")
         {
             currentPowerUp = other.GetComponent<PowerUp>();
+            powerupIcon.sprite = currentPowerUp.icon;
+            powerupIcon.GetComponentInParent<Animator>().SetBool("PanelUp", true);
             float RandomX = Random.Range(-20000, 20000);
             float RandomY = Random.Range(-20000, 20000);
             other.gameObject.transform.position = new Vector3(RandomX, RandomY, 0);

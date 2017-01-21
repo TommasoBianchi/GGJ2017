@@ -6,6 +6,7 @@ public class PowerUp : MonoBehaviour {
 
     public float SpeedBoost;
     public float powerUpTimer;
+    public Sprite icon;
 
     private float startingTimer;
     private PlayerController playerController;
