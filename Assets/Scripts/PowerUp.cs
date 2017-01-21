@@ -35,7 +35,6 @@ public class PowerUp : MonoBehaviour {
 
     public void Activate(PlayerController player)
     {
-        Debug.Log(powerUpType);
         playerController = player;
         startingTimer = Time.time;
         switch (powerUpType)

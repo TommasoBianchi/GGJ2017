@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour {
 	private bool KeyPressed = false;
 	private float FirstClick = 0;
 	private int count = 0;
-
+    private float probabilityToSpeak = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -38,7 +38,8 @@ public class PlayerController : MonoBehaviour {
 			gameObject.transform.RotateAround(transform.position, Vector3.back, (turningRadius * Time.deltaTime));
 		}
 		if (Input.GetKeyDown ("space")) {
-			//gameObject.transform.RotateAround(transform.position, Vector3.back, turningRadius);
+            //gameObject.transform.RotateAround(transform.position, Vector3.back, turningRadius);
+            probabilityToSpeak += 0.05f;
 			if (!KeyPressed) {
 				KeyPressed = true;
 				FirstClick = Time.time;
@@ -51,6 +52,12 @@ public class PlayerController : MonoBehaviour {
 				}
 			}
 		}		
+
+        if(Random.value < probabilityToSpeak)
+        {
+            audioController.Play(AudioController.SfxType.Voice);
+            probabilityToSpeak = 0;
+        }
 	}
 
     void OnTriggerEnter2D(Collider2D other)
@@ -70,16 +77,15 @@ public class PlayerController : MonoBehaviour {
 	public bool WaveTouch () {
         if (hasShield)
         {
-            Debug.Log("hehe");
             hasShield = false;
             shield.SetActive(false);
             return false;
         }
         else
         {
-            Debug.Log("crauti");
             audioController.Play(AudioController.SfxType.GameOver);
 			DeathPanel.SetActive(true);
+            FindObjectOfType<MenuController>().ActivateDeathPanel();         
 			speed = 0;
             return true;
         }

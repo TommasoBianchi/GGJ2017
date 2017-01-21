@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour {
@@ -11,15 +12,22 @@ public class MenuController : MonoBehaviour {
 	private float TimeClick = 0; 
 	public EventSystem eventSystem;
 	public GameObject[] buttons;
+
+    bool isDeathPanelVisible = false;
 	
 	// Use this for initialization
 	void Start () {
 		//eventSystem.SetSelectedGameObject(buttons[0]);
 		count = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (!isDeathPanelVisible)
+            return;
+
 		if (ClickedOne && Time.time-TimeClick>0.15f) {
 			eventSystem.SetSelectedGameObject(buttons[count]);
 			count++;
@@ -39,4 +47,14 @@ public class MenuController : MonoBehaviour {
 			}
 		}		
 	}
+
+    public void ActivateDeathPanel()
+    {
+        isDeathPanelVisible = true;
+    }
+
+    public void ReloadCurrentScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
