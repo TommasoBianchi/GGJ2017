@@ -97,7 +97,7 @@ public class Wave : MonoBehaviour {
 
         float alpha = (maxRadius - currentRadius) / (maxRadius - startingRadius);
         alpha = 1 - (1 - alpha) * (1 - alpha);
-        canHitPlayer = alpha > 0.2;
+        canHitPlayer = canHitPlayer && alpha > 0.2;
         Color color = new Color(1, 1, 1, alpha);
         for (int i = 0; i < lineRenderers.Count; i++)
         {
@@ -158,7 +158,8 @@ public class Wave : MonoBehaviour {
                 sqrDistance = SqrDistanceBetweenVectors2D(positions[j], playerPosition);
                 if (sqrDistance < epsilon * epsilon)
                 {
-                    player.speed = 0;
+                    canHitPlayer = player.WaveTouch();
+                    return;
                 }
             }
         }

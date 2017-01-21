@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour {
     public GameObject powerUpShield;
     public GameObject powerUpSpeed;
     public GameObject powerUpWaterlily;
-    public GameObject powerUpWaves; 
+    public GameObject powerUpWaves;
     public GameObject player;
     public float maxDistance;
     public float waterlilyRadius;
@@ -181,6 +181,14 @@ public class GameController : MonoBehaviour {
         float waveSpeed = Random.Range(0.5f, 2f);
         float maxRadius = (3f - waveSpeed) * 5;
         waveController.SpawnWave(player.transform.position + offset, waveSpeed, maxRadius);
-        timeToSpawnAWave = Time.time + 2;
+        timeToSpawnAWave = Time.time + Random.Range(0.5f, 1.5f);
+    }
+
+    public void SpawnWaterlily(Vector3 pos)
+    {
+        Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0, 360f));
+        GameObject waterlilyObj = Instantiate(waterlily, player.transform.position, randomRotation) as GameObject;
+        waterlilies.Add(waterlilyObj);
+        waterliliesPos.Add(waterlilyObj.transform.position);        
     }
 }

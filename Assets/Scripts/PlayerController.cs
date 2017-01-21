@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
 
 	public float speed;
-	public AudioController audioSource;
+	public AudioController audioController;
 	public float turningSpeed;
 	public float turningRadius;
 	public bool hasShield;
+    public GameObject shield;
 
     public Image powerupIcon;
 
@@ -55,7 +56,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (other.tag == "powerup")
         {
-			audioSource.Play(AudioController.SfxType.PowerUpPickup);
+			audioController.Play(AudioController.SfxType.PowerUpPickup);
             currentPowerUp = other.GetComponent<PowerUp>();
             powerupIcon.sprite = currentPowerUp.icon;
             powerupIcon.GetComponentInParent<Animator>().SetBool("PanelUp", true);
@@ -65,12 +66,20 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-	void WaveTouch () {
-		if (hasShield)
-			hasShield = false;
-		else{
-			audioSource.Play(AudioController.SfxType.GameOver);
-			Debug.Break();
-		}
+	public bool WaveTouch () {
+        if (hasShield)
+        {
+            Debug.Log("hehe");
+            hasShield = false;
+            shield.SetActive(false);
+            return false;
+        }
+        else
+        {
+            Debug.Log("crauti");
+            audioController.Play(AudioController.SfxType.GameOver);
+            Debug.Break();
+            return true;
+        }
 	}
 }

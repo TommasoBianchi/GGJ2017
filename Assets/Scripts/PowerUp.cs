@@ -5,7 +5,6 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour {
 
     public float SpeedBoost;
-    public AudioController audioController;
     public float powerUpTimer;
     public Sprite icon;
 
@@ -17,11 +16,14 @@ public class PowerUp : MonoBehaviour {
     private bool Used = false;
 
     private static WaveController waveController;
+    private static GameController gameController;
 
     void Start()
     {
         if (waveController == null)
             waveController = FindObjectOfType<WaveController>();
+        if (gameController == null)
+            gameController = FindObjectOfType<GameController>();
     }
 
 
@@ -41,19 +43,21 @@ public class PowerUp : MonoBehaviour {
             case PowerUpType.Speed:
                 player.speed += SpeedBoost;
                 Used = true;
-                audioController.Play(AudioController.SfxType.Sprint);
+                player.audioController.Play(AudioController.SfxType.Sprint);
                 break;
             case PowerUpType.Shield:
                 player.hasShield = true;
                 Used = true;
-                audioController.Play(AudioController.SfxType.Bubble);
+                player.shield.SetActive(true);
+                player.audioController.Play(AudioController.SfxType.Bubble);
                 break;
             case PowerUpType.Waves:
                 waveController.SpawnWave(player.transform.position + 0.1f * player.speed * player.transform.up, 12, 15, 1.5f);
-                audioController.Play(AudioController.SfxType.Wave);
+                player.audioController.Play(AudioController.SfxType.Wave);
                 break;
             case PowerUpType.Waterlily:
-                audioController.Play(AudioController.SfxType.Flower);
+                gameController.SpawnWaterlily(player.transform.position);
+                player.audioController.Play(AudioController.SfxType.Flower);
                 break;
         }
     }
@@ -68,6 +72,7 @@ public class PowerUp : MonoBehaviour {
                 break;
             case PowerUpType.Shield:
                 player.hasShield = false;
+                player.shield.SetActive(false);
                 break;
             case PowerUpType.Waves:
                 break;
