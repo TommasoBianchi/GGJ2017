@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: a5e782853789a3c46a898a915de27abb
+timeCreated: 1485020712
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: LazyFox
+  fontNames:
+  - LazyFox
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 98565985dce64fb43b427b7a893c5988, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
