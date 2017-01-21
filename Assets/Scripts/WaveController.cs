@@ -8,9 +8,11 @@ public class WaveController : MonoBehaviour {
 
     LinkedList<Wave> activeWaves = new LinkedList<Wave>();
     GameController gameController;
+    PlayerController player;
     
 	void Start () {
         gameController = FindObjectOfType<GameController>();
+        player = FindObjectOfType<PlayerController>();
 	}
 	
 	void Update ()
@@ -44,6 +46,9 @@ public class WaveController : MonoBehaviour {
 
             // Check collisions with waterlilies
             waveA.Value.CheckCollisionsWithWaterlilies(waterliliesPos, 2);
+
+            // Check collisions with the player
+            waveA.Value.CheckCollisionWithPlayer(player);
 
             waveA = waveA.Next;
         }
