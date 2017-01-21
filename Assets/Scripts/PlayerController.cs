@@ -49,10 +49,18 @@ public class PlayerController : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
     {
-		Debug.Log("dkes");
+		//Debug.Log("dkes");
 		if (other.tag == "powerup" ) {
 			currentPowerUp = other.GetComponent<PowerUp>();
 			other.gameObject.GetComponent<Renderer>().enabled = false;
 		}
     }
+
+	void WaveTouch () {
+		if (hasShield)
+			hasShield = false;
+		else
+			Debug.Break();
+
+	}
 }
