@@ -112,7 +112,7 @@ public class GameController : MonoBehaviour {
             if (canInstantiate == true)
             {
                 Vector3 Position = new Vector3(randomPosX, randomPosY, 0);
-                int r = Random.Range(0, 4);
+                int r = 0;//Random.Range(0, 4);
                 switch (r)
                 {
                     case 0:
@@ -148,7 +148,7 @@ public class GameController : MonoBehaviour {
 
     private void Update()
     {
-        for (int i = 0; i < waterliliesNumber; i++)
+        for (int i = 0; i < waterlilies.Count; i++)
         {
             if (player.transform.position.x - waterlilies[i].transform.position.x > maxDistance)
             {
@@ -175,7 +175,7 @@ public class GameController : MonoBehaviour {
             waterlilies[i].GetComponent<Collider2D>().enabled = waterlilies[i].GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Idle");
         }
 
-        for (int i = 0; i < powerUpNumber; i++)
+        for (int i = 0; i < powerUps.Count; i++)
         {
             if (player.transform.position.x - powerUps[i].transform.position.x > maxDistance)
             {

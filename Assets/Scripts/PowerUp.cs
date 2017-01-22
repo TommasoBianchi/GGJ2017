@@ -72,7 +72,7 @@ public class PowerUp : MonoBehaviour {
                 break;
             case PowerUpType.Shield:
                 player.hasShield = false;
-                player.shield.SetActive(false);
+                //player.shield.SetActive(false);
                 player.shield.GetComponent<Animator>().SetBool("ShieldActive", false);
                 break;
             case PowerUpType.Waves:
