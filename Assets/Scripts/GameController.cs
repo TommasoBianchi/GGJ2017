@@ -199,7 +199,7 @@ public class GameController : MonoBehaviour {
             newIA.transform.SetParent(IAGroup.transform);
             IAObjects.Add(newIA.GetComponent<IA>());
         }
-    }
+    } 
 
     public GameObject[] getWaterlilies()
     {

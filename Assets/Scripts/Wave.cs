@@ -21,6 +21,7 @@ public class Wave : MonoBehaviour {
     Vector3 center;
     bool canHitPlayer = true;
     bool simulateWave = false;
+    int frameCount = 0;
 
     const int numberOfPoints = 500;
     const int minNumberOfPointsForLine = 30;
@@ -53,7 +54,9 @@ public class Wave : MonoBehaviour {
             else
                 activeVertices[0] = activeVertices[activeVertices.Length - 1];
 
-            Generate();
+            frameCount++;
+            if(frameCount % 3 == 0)
+                Generate();
         }
         else
         {
