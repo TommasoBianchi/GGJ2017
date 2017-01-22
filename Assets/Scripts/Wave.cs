@@ -22,8 +22,8 @@ public class Wave : MonoBehaviour {
     bool canHitPlayer = true;
     bool simulateWave = false;
 
-    const int numberOfPoints = 1000;
-    const int minNumberOfPointsForLine = 50;
+    const int numberOfPoints = 500;
+    const int minNumberOfPointsForLine = 30;
 
     void StartCircle () {
         currentRadius = startingRadius;
@@ -69,11 +69,6 @@ public class Wave : MonoBehaviour {
 
     void Generate()
     {
-        for (int i = 0; i < lineRenderers.Count; i++)
-        {
-            lineRenderers[i].numPositions = 0;
-        }
-
         int lineRendererIndex = 0;
 
         List<Vector3> positionsToShow = new List<Vector3>(numberOfPoints);
@@ -87,7 +82,7 @@ public class Wave : MonoBehaviour {
             }
             else if(positionsToShow.Count > minNumberOfPointsForLine)
             {
-                lineRendererIndex = UpdateLineRenderer(lineRendererIndex, positionsToShow);
+                lineRendererIndex = UpdateLineRendererInfo(lineRendererIndex, positionsToShow);
             }
             else if (positionsToShow.Count > 0)
             {
@@ -106,21 +101,22 @@ public class Wave : MonoBehaviour {
         }
         if (positionsToShow.Count > 0)
         {
-            lineRendererIndex = UpdateLineRenderer(lineRendererIndex, positionsToShow);
+            lineRendererIndex = UpdateLineRendererInfo(lineRendererIndex, positionsToShow);
         }
 
-        float alpha = (maxRadius - currentRadius) / (maxRadius - startingRadius);
-        alpha = 1 - (1 - alpha) * (1 - alpha);
-        canHitPlayer = canHitPlayer && alpha > 0.2;
-        Color color = new Color(1, 1, 1, alpha);
         for (int i = 0; i < lineRenderers.Count; i++)
         {
+            float alpha = (maxRadius - currentRadius) / (maxRadius - startingRadius);
+            alpha = 1 - (1 - alpha) * (1 - alpha);
+            canHitPlayer = canHitPlayer && alpha > 0.2;
+            Color color = new Color(1, 1, 1, alpha);
+
             lineRenderers[i].startColor = color;
             lineRenderers[i].endColor = color;
-        }        
+        }
     }
 
-    int UpdateLineRenderer(int lineRendererIndex, List<Vector3> positionsToShow)
+    int UpdateLineRendererInfo(int lineRendererIndex, List<Vector3> positionsToShow)
     {
         if (lineRendererIndex >= lineRenderers.Count)
         {
@@ -240,28 +236,6 @@ public class Wave : MonoBehaviour {
         }
 
         return nextActiveVertices;
-        //activeVertices = nextActiveVertices;
-        //otherWave.activeVertices = otherNextActiveVertices;
-
-        //Vector3[] thisPoints = positions;
-        //Vector3[] otherPoints = otherWave.positions;
-        //List<Vector3> thisNextPoints = positions.ToList();
-        //List<Vector3> otherNextPoints = otherWave.positions.ToList();
-
-        //for (int i = 0; i < thisPoints.Length; i++)
-        //{
-        //    if (activeVertices[i] == false || thisPoints[i] == Vector3.zero) continue;
-        //    for (int j = 0; j < otherPoints.Length; j++)
-        //    {
-        //        if (otherWave.activeVertices[j] == false || otherPoints[j] == Vector3.zero) continue;
-        //        float sqrDistance = (thisPoints[i] - otherPoints[j]).sqrMagnitude;
-        //        if (sqrDistance < epsilon * epsilon)
-        //        {
-        //            activeVertices[i] = false;
-        //            otherWave.activeVertices[j] = false;
-        //        }
-        //    }
-        //}
     }
 
     public void CheckCollisionWithIA(IA[] IAObjects)

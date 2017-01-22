@@ -10,22 +10,21 @@ public class IAFrenk : IA {
             return Direction.GoForward;
 
         int i, minI = 0;
-        float distance, minDist = 2000;
+        float sqrDistance, minDistSqr = 2000;
         Vector3 direction;
 
         for (i = 0; i < waves.Length; i++)
         {
-            distance = Vector3.Distance(gameObject.transform.position, waves[i].center);
+            sqrDistance = (gameObject.transform.position - waves[i].center).sqrMagnitude;
 
-            if (distance < minDist)
+            if (sqrDistance < minDistSqr)
             {
-                minDist = distance;
+                minDistSqr = sqrDistance;
                 minI = i;
             }
         }
 
-        
-        if (minDist <= (waves[minI].radius + 4))
+        if (minDistSqr <= (waves[minI].radius + 4) * (waves[minI].radius + 4))
         {
             direction = waves[minI].center - gameObject.transform.position;
             float angle = Vector3.Angle(gameObject.transform.up, direction);
