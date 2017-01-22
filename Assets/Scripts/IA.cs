@@ -15,9 +15,11 @@ public class IA : MonoBehaviour {
     }
 
     WaveController waveController;
+    PlayerController player;
     
 	void Start () {
         waveController = FindObjectOfType<WaveController>();
+        player = FindObjectOfType<PlayerController>();
 	}
 	
 	void Update () {
@@ -29,7 +31,7 @@ public class IA : MonoBehaviour {
             waveInfo[i] = waves[i].GetInfo();
         }
 
-        switch (Decide(waveInfo))
+        switch (Decide(waveInfo, player.transform.position))
         {
             case Direction.RotateLeft:
                 gameObject.transform.RotateAround(transform.position, Vector3.back, -(turningSpeed * Time.deltaTime));
@@ -44,7 +46,7 @@ public class IA : MonoBehaviour {
         gameObject.transform.position += transform.up * speed * Time.deltaTime;
     }
 
-    protected virtual Direction Decide(WaveInfo[] waves)
+    protected virtual Direction Decide(WaveInfo[] waves, Vector3 playerPosition)
     {
         return Direction.GoForward;
     }
