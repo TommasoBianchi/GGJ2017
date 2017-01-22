@@ -36,12 +36,24 @@ public class GameController : MonoBehaviour {
     {
         waveController = FindObjectOfType<WaveController>();
     }
-    
+
+    int frameCount = 0;
     private void StartGame()
-    {        
-            SpawnWaterlilies();
-            SpawnPowerUp();
-            SpawnIA();
+    {
+        switch (frameCount)
+        {
+            case 0:
+                SpawnWaterlilies();
+                break;
+            case 1:
+                SpawnPowerUp();
+                break;
+            case 2:
+                SpawnIA();
+                break;
+        }
+
+        frameCount++;
     }
 
     private void SpawnWaterlilies()
@@ -201,7 +213,7 @@ public class GameController : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown("space") && !Go) {
+        if (Input.GetKeyDown("space")) {
             Go = true;
             GameTutorial.SetActive(false);
             StartGame();

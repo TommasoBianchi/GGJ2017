@@ -17,6 +17,7 @@ public class IA : MonoBehaviour {
     WaveController waveController;
     PlayerController player;
     Animator animator;
+    float dieTime = -1;
     
 	void Start () {
         waveController = FindObjectOfType<WaveController>();
@@ -25,34 +26,44 @@ public class IA : MonoBehaviour {
 	}
 	
 	void Update () {
-        WaveInfo[] waveInfo = waveController.GetWaves();
-
-        switch (Decide(waveInfo, player.transform.position))
+        if (dieTime > 0 && Time.deltaTime > dieTime)
         {
-            case Direction.RotateLeft:
-                gameObject.transform.RotateAround(transform.position, Vector3.back, -(turningSpeed * Time.deltaTime));
-                animator.SetBool("IsTurning", true);
-                break;
-            case Direction.RotateRight:
-                gameObject.transform.RotateAround(transform.position, Vector3.back, (turningSpeed * Time.deltaTime));
-                animator.SetBool("IsTurning", true);
-                break;
-            default:
-                if ((transform.position - player.transform.position).sqrMagnitude > 2500)
-                {
-                    gameObject.transform.position = player.transform.position - (gameObject.transform.position - player.transform.position);
-                    gameObject.transform.rotation = Quaternion.LookRotation(Vector3.forward, player.transform.position - transform.position);
-                }
-                animator.SetBool("IsTurning", false);
-                break;
+            transform.position = new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), 0) + player.transform.position;
+            animator.SetTrigger("Live");
+            dieTime = -1;
         }
+        else if (dieTime == -1)
+        {
+            WaveInfo[] waveInfo = waveController.GetWaves();
 
-        gameObject.transform.position += transform.up * speed * Time.deltaTime;
+            switch (Decide(waveInfo, player.transform.position))
+            {
+                case Direction.RotateLeft:
+                    gameObject.transform.RotateAround(transform.position, Vector3.back, -(turningSpeed * Time.deltaTime));
+                    animator.SetBool("IsTurning", true);
+                    break;
+                case Direction.RotateRight:
+                    gameObject.transform.RotateAround(transform.position, Vector3.back, (turningSpeed * Time.deltaTime));
+                    animator.SetBool("IsTurning", true);
+                    break;
+                default:
+                    if ((transform.position - player.transform.position).sqrMagnitude > 2500)
+                    {
+                        gameObject.transform.position = player.transform.position - (gameObject.transform.position - player.transform.position);
+                        gameObject.transform.rotation = Quaternion.LookRotation(Vector3.forward, player.transform.position - transform.position);
+                    }
+                    animator.SetBool("IsTurning", false);
+                    break;
+            }
+
+            gameObject.transform.position += transform.up * speed * Time.deltaTime;
+        }
     }
 
     public void Die()
     {
         animator.SetTrigger("Die");
+        dieTime = Time.time;
     }
 
     protected virtual Direction Decide(WaveInfo[] waves, Vector3 playerPosition)

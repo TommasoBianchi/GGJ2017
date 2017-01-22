@@ -6,18 +6,24 @@ public class IAFlavio : IA {
 
     public enum FavouriteDirection { left_handed, right_handed }
     FavouriteDirection favouriteDir;
+    bool initialized = false;
 
-    void Start ()
+    void Initialize ()
     {
         int r = Random.Range(0, 1);
         if (r == 0)
             favouriteDir = FavouriteDirection.left_handed;
         else
             favouriteDir = FavouriteDirection.right_handed;
+
+        initialized = true;
     }
 
     protected override Direction Decide(WaveInfo[] waves, Vector3 playerPosition)
     {
+        if (!initialized)
+            Initialize();
+
         foreach (WaveInfo wave in waves)
         {
             if (CalculateQuadDistance(wave, this.transform.position) < 100)

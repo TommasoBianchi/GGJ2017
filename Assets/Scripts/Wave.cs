@@ -69,6 +69,11 @@ public class Wave : MonoBehaviour {
 
     void Generate()
     {
+        for (int i = 0; i < lineRenderers.Count; i++)
+        {
+            lineRenderers[i].numPositions = 0;
+        }
+
         int lineRendererIndex = 0;
 
         List<Vector3> positionsToShow = new List<Vector3>(numberOfPoints);
