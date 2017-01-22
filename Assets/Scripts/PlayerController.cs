@@ -78,18 +78,18 @@ public class PlayerController : MonoBehaviour {
 
             powerupIcon.sprite = currentPowerUp.icon;
             powerupIcon.GetComponentInParent<Animator>().SetBool("PanelUp", true);
-
-            //float RandomX = Random.Range(-20000, 20000);
-            //float RandomY = Random.Range(-20000, 20000);
-            //other.gameObject.transform.position = new Vector3(RandomX, RandomY, 0);
         }
     }
 
 	public bool WaveTouch () {
+        if (!this.enabled)
+            return false;
+
         if (hasShield)
         {
             hasShield = false;
             shield.SetActive(false);
+            shield.GetComponent<Animator>().SetBool("ShieldActive", false);
             return false;
         }
         else

@@ -37,6 +37,9 @@ public class AudioController : MonoBehaviour {
 
 	public Sfx[] sfx;
 	public void Play(SfxType sfxType){
+        if (sourceDictionary[sfxType].isPlaying)
+            return;
+
         sourceDictionary[sfxType].Play();
         AudioClip[] clips = clipsDictionary[sfxType];
         int index = Random.Range(0, clips.Length);
