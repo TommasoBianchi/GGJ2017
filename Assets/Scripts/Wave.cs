@@ -25,11 +25,6 @@ public class Wave : MonoBehaviour {
     const int numberOfPoints = 1000;
     const int minNumberOfPointsForLine = 50;
 
-    private void Start()
-    {
-        
-    }
-
     void StartCircle () {
         currentRadius = startingRadius;
         lineRenderers.Add(GetComponent<LineRenderer>());
@@ -184,21 +179,21 @@ public class Wave : MonoBehaviour {
         }
     }
 
-    public void CheckCollisionsWithWaterlilies(Vector2[] waterliliesPositions, float waterliliesRadius)
+    public void CheckCollisionsWithWaterlilies(Vector3[] waterliliesPositions, float[] waterliliesRadius)
     {
         float epsilon = 0.3f;
-        float maxDistance = currentRadius + waterliliesRadius + epsilon;
 
         for (int i = 0; i < waterliliesPositions.Length; i++)
         {
-            float sqrDistance = SqrDistanceBetweenVectors2D(center, (Vector3)waterliliesPositions[i]);
+            float maxDistance = currentRadius + waterliliesRadius[i] + epsilon;
+            float sqrDistance = SqrDistanceBetweenVectors2D(center, waterliliesPositions[i]);
             if(sqrDistance < maxDistance * maxDistance)
             {
                 for (int j = 0; j < positions.Length; j++)
                 {
                     if (activeVertices[j] == false) continue;
-                    sqrDistance = SqrDistanceBetweenVectors2D(positions[j], (Vector3)waterliliesPositions[i]);
-                    if(sqrDistance - waterliliesRadius * waterliliesRadius < epsilon * epsilon)
+                    sqrDistance = SqrDistanceBetweenVectors2D(positions[j], waterliliesPositions[i]);
+                    if(sqrDistance - waterliliesRadius[i] * waterliliesRadius[i] < epsilon * epsilon)
                     {
                         activeVertices[j] = false;
                     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class WaveController : MonoBehaviour {
 
@@ -23,7 +24,7 @@ public class WaveController : MonoBehaviour {
 
     void CheckCollisions()
     {
-        Vector2[] waterliliesPos = gameController.getWaterliliesPos().ToArray();
+        GameObject[] waterlilies = gameController.getWaterlilies();
 
         LinkedListNode<Wave> waveA = activeWaves.First;
         while (waveA != null)
@@ -45,7 +46,8 @@ public class WaveController : MonoBehaviour {
             }
 
             // Check collisions with waterlilies
-            waveA.Value.CheckCollisionsWithWaterlilies(waterliliesPos, 1.4f);
+            waveA.Value.CheckCollisionsWithWaterlilies(waterlilies.Select(w => w.transform.position).ToArray(),
+                waterlilies.Select(w => 1.4f * w.transform.localScale.x / 4f).ToArray());
 
             // Check collisions with the player
             waveA.Value.CheckCollisionWithPlayer(player);

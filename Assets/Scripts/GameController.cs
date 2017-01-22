@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GameController : MonoBehaviour {
 
@@ -63,6 +64,7 @@ public class GameController : MonoBehaviour {
                 Vector3 Position = new Vector3(randomPosX, randomPosY, 0);
                 Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0, 360f));
                 waterlilies.Add(Instantiate(obstaclesPrefabs[Random.Range(0, obstaclesPrefabs.Length)], Position, randomRotation));
+                waterlilies[waterlilies.Count - 1].transform.localScale = Vector3.one * Random.Range(3f, 6f);
                 waterlilies[waterlilies.Count - 1].GetComponent<Animator>().SetFloat("Speed", Random.Range(0.2f, 2f));
             }
             canInstantiate = true;
@@ -139,9 +141,9 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    public List<Vector2> getWaterliliesPos()
+    public GameObject[] getWaterlilies()
     {
-        return waterliliesPos;
+        return waterlilies.ToArray();
     }
 
     private void Update()
@@ -226,8 +228,7 @@ public class GameController : MonoBehaviour {
             canSimulate: () => rockAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f);
         timeToSpawnAWave = Time.time + Random.Range(0.2f, 1.5f);
     }
-
-
+    
     public void SpawnWaterlily(Vector3 pos)
     {
         Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0, 360f));
