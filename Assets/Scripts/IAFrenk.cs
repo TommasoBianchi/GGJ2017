@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IAFrenk : IA {
 
-	protected override Direction Decide(WaveInfo[] waves){
+	protected override Direction Decide(WaveInfo[] waves, Vector3 playerPosition){
 		int i, minI = 0;
 		float distance, minDist = 2000;
 		Vector3 direction;
