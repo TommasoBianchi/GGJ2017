@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
 
@@ -12,20 +13,25 @@ public class MenuController : MonoBehaviour {
 	private float TimeClick = 0; 
 	public EventSystem eventSystem;
 	public GameObject[] buttons;
+	public GameObject MusicButton, audioSource;
+	
+	public Sprite[] images = new Sprite[2];
+	public bool laUso;
 
     bool isDeathPanelVisible = false;
 	
 	// Use this for initialization
 	void Start () {
 		//eventSystem.SetSelectedGameObject(buttons[0]);
-		count = 1;
+		count = 0;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+		MusicSettings(MusicButton, PlayerPrefs.GetInt("music", 0));
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (!isDeathPanelVisible)
+        if (laUso && !isDeathPanelVisible)
             return;
 
 		if (ClickedOne && Time.time-TimeClick>0.15f) {
@@ -57,4 +63,27 @@ public class MenuController : MonoBehaviour {
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+	public void MusicOnOff () {
+		MusicButton.GetComponent<Image>().sprite = images[1 - PlayerPrefs.GetInt("music")];
+		PlayerPrefs.SetInt("music", 1 - PlayerPrefs.GetInt("music"));
+		if (PlayerPrefs.GetInt("music") == 0)
+			audioSource.GetComponent<AudioSource>().mute = false;
+		else
+			audioSource.GetComponent<AudioSource>().mute = true;
+	}
+	private void MusicSettings (GameObject musics, int i) {
+		musics.GetComponent<Image>().sprite = images[i];
+		if (PlayerPrefs.GetInt("music") == 0)
+			audioSource.GetComponent<AudioSource>().mute = false;
+		else
+			audioSource.GetComponent<AudioSource>().mute = true;
+	}
+
+	public void loadScene (int i) {
+		SceneManager.LoadScene(i);
+	}
+	public void ExitGame () {
+		Application.Quit();
+	}
 }
