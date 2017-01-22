@@ -12,7 +12,7 @@ public class MenuController : MonoBehaviour {
 	private float TimeClick = 0; 
 	public EventSystem eventSystem;
 	public GameObject[] buttons;
-
+    
     bool isDeathPanelVisible = false;
 	
 	// Use this for initialization

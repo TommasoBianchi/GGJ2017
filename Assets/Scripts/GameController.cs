@@ -127,6 +127,7 @@ public class GameController : MonoBehaviour {
                         powerUps.Add(Instantiate(powerUpWaves, Position, powerUpWaves.transform.rotation));
                         break;
                 }
+                powerUps[powerUps.Count - 1].GetComponent<Animator>().SetBool("Active", true);
             }
             else
                 i--;
@@ -207,15 +208,24 @@ public class GameController : MonoBehaviour {
         Vector3 offset = Vector3.zero;
         while(offset.sqrMagnitude < 25)
             offset = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), 0);
-        Vector3 direction = player.transform.TransformDirection(Vector3.up) * 15;
+        Vector3 direction = player.transform.TransformDirection(Vector3.up) * 25;
+        Vector3 spawnPosition = player.transform.position + offset + direction;
+
+        for (int i = 0; i < waterliliesPos.Count; i++)
+        {
+            if (((Vector3)waterliliesPos[i] - spawnPosition).sqrMagnitude < 0.5f)
+                return;
+        }
+
         float waveSpeed = Random.Range(0.5f, 2f);
         float maxRadius = (3f - waveSpeed) * 5;
         Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0, 360f));
-        GameObject rock = Instantiate(rockPrefab, player.transform.position + offset, randomRotation) as GameObject;
+        GameObject rock = Instantiate(rockPrefab, spawnPosition, randomRotation) as GameObject;
         Animator rockAnimator = rock.GetComponent<Animator>();
 
-        waveController.SpawnWave(player.transform.position + direction, waveSpeed, maxRadius);
-        timeToSpawnAWave = Time.time + Random.Range(1f, 2.5f);
+        waveController.SpawnWave(spawnPosition, waveSpeed, maxRadius,
+            canSimulate: () => rockAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f);
+        timeToSpawnAWave = Time.time + Random.Range(0.2f, 1.5f);
     }
 
 
