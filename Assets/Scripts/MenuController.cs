@@ -48,9 +48,12 @@ public class MenuController : MonoBehaviour {
 				ClickedOne = true;
 			}
 			else {
-				eventSystem.currentSelectedGameObject.GetComponent<Button>().onClick.Invoke();
-				Debug.Log("submit");
-				ClickedOne = false;
+                if (eventSystem.currentSelectedGameObject != null)
+                {
+                    eventSystem.currentSelectedGameObject.GetComponent<Button>().onClick.Invoke();
+                    Debug.Log("submit");
+                    ClickedOne = false;
+                }
 			}
 		}		
 	}

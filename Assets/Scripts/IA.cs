@@ -14,11 +14,17 @@ public class IA : MonoBehaviour {
     WaveController waveController;
     
 	void Start () {
-		
+        waveController = FindObjectOfType<WaveController>();
 	}
 	
 	void Update () {
-		
+        Wave[] waves = waveController.GetWaves();
+        WaveInfo[] waveInfo = new WaveInfo[waves.Length];
+
+        for (int i = 0; i < waveInfo.Length; i++)
+        {
+            waveInfo[i] = waves[i].GetInfo();
+        }
 	}
 
     protected virtual Direction Decide(WaveInfo[] waves)
@@ -26,7 +32,7 @@ public class IA : MonoBehaviour {
         return Direction.GoForward;
     }
 
-    protected struct WaveInfo
+    public struct WaveInfo
     {
         public Vector3 center;
         public float radius;
