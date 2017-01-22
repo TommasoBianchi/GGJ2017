@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class IA : MonoBehaviour {
+
+    protected enum Direction
+    {
+        RotateLeft,
+        RotateRight,
+        GoForward
+    }
+
+    WaveController waveController;
     
 	void Start () {
 		
@@ -12,12 +21,12 @@ public class IA : MonoBehaviour {
 		
 	}
 
-    protected virtual bool Decide(WaveInfo[] waves)
+    protected virtual Direction Decide(WaveInfo[] waves)
     {
         return false;
     }
 
-    public struct WaveInfo
+    protected struct WaveInfo
     {
         public Vector3 center;
         public float radius;
