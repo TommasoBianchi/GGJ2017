@@ -20,10 +20,12 @@ public class PlayerController : MonoBehaviour {
 	private float FirstClick = 0;
 	private int count = 0;
     private float probabilityToSpeak = 0;
+    private Animator animator;
 
 	// Use this for initialization
 	void Start () {
 		hasShield = false;
+        animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -36,7 +38,12 @@ public class PlayerController : MonoBehaviour {
 		gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
 		if (!KeyPressed && Input.GetKey("space")) {
 			gameObject.transform.RotateAround(transform.position, Vector3.back, (turningRadius * Time.deltaTime));
+            animator.SetBool("IsTurning", true);
 		}
+        else
+        {
+            animator.SetBool("IsTurning", false);
+        }
 		if (Input.GetKeyDown ("space")) {
             //gameObject.transform.RotateAround(transform.position, Vector3.back, turningRadius);
             probabilityToSpeak += 0.05f;
@@ -91,6 +98,8 @@ public class PlayerController : MonoBehaviour {
 			DeathPanel.SetActive(true);
             FindObjectOfType<MenuController>().ActivateDeathPanel();         
 			speed = 0;
+            animator.SetTrigger("Die");
+            this.enabled = false;
             return true;
         }
 	}
