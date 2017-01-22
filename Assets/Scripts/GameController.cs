@@ -6,6 +6,7 @@ using System.Linq;
 public class GameController : MonoBehaviour {
 
     public GameObject[] obstaclesPrefabs;
+    public GameObject[] IAPrefabs;
     public GameObject rockPrefab;
     public GameObject powerUpShield;
     public GameObject powerUpSpeed;
@@ -17,11 +18,13 @@ public class GameController : MonoBehaviour {
     public float powerUpRadius;
     public int waterliliesNumber;
     public int powerUpNumber;
+    public int IANumber;
 
     private List<Vector2> waterliliesPos = new List<Vector2>();
     private List<GameObject> waterlilies = new List<GameObject>();
     private List<Vector2> powerUpPos = new List<Vector2>();
     private List<GameObject> powerUps = new List<GameObject>();
+    private List<IA> IAObjects = new List<IA>();
     private bool canInstantiate = true;
     private float timeToSpawnAWave = 2;
     private WaveController waveController;
@@ -32,6 +35,7 @@ public class GameController : MonoBehaviour {
 
         SpawnWaterlilies();
         SpawnPowerUp();
+        SpawnIA();
     }
 
     private void SpawnWaterlilies()
@@ -141,9 +145,52 @@ public class GameController : MonoBehaviour {
         }
     }
 
+    private void SpawnIA()
+    {
+        GameObject IAGroup = new GameObject("IAGroup");
+
+        for (int i = 0; i < IANumber; i++)
+        {
+            float randomPosX = Random.Range(player.transform.position.x - maxDistance / 2, player.transform.position.x + maxDistance / 2);
+            float randomPosY = Random.Range(player.transform.position.y - maxDistance / 2, player.transform.position.y + maxDistance / 2);
+            Vector3 spawnPosition = new Vector3(randomPosX, randomPosY, 0);
+            bool canSpawn = false;
+            float epsilon = 0.4f;
+
+            do
+            {
+                canSpawn = true;
+                for (int j = 0; j < waterlilies.Count; j++)
+                {
+                    if((waterlilies[j].transform.position - spawnPosition).sqrMagnitude < epsilon * epsilon)
+                    {
+                        canSpawn = false;
+                        break;
+                    }
+                }
+                if (!canSpawn)
+                {
+                    randomPosX = Random.Range(player.transform.position.x - maxDistance / 2, player.transform.position.x + maxDistance / 2);
+                    randomPosY = Random.Range(player.transform.position.y - maxDistance / 2, player.transform.position.y + maxDistance / 2);
+                    spawnPosition = new Vector3(randomPosX, randomPosY, 0);
+                }
+            } while (!canSpawn);
+
+            Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0, 360f));
+            GameObject newIA = Instantiate(IAPrefabs[Random.Range(0, IAPrefabs.Length)], spawnPosition, randomRotation) as GameObject;
+            newIA.transform.SetParent(IAGroup.transform);
+            IAObjects.Add(newIA.GetComponent<IA>());
+        }
+    }
+
     public GameObject[] getWaterlilies()
     {
         return waterlilies.ToArray();
+    }
+
+    public IA[] getIAObjects()
+    {
+        return IAObjects.ToArray();
     }
 
     private void Update()
@@ -211,6 +258,7 @@ public class GameController : MonoBehaviour {
             offset = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), 0);
         Vector3 direction = player.transform.up * 40;
         Vector3 spawnPosition = player.transform.position + offset + direction;
+        //spawnPosition = new Vector3(Random.Range(-50f, 50f), Random.Range(-50f, 50f), 0);
 
         for (int i = 0; i < waterliliesPos.Count; i++)
         {

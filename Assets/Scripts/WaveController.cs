@@ -18,7 +18,6 @@ public class WaveController : MonoBehaviour {
 	
 	void Update ()
     {
-        //CheckInput(); // this is only for testing
         CheckCollisions();
     }
 
@@ -52,25 +51,13 @@ public class WaveController : MonoBehaviour {
             // Check collisions with the player
             waveA.Value.CheckCollisionWithPlayer(player);
 
+            // Check collisions with IA
+            waveA.Value.CheckCollisionWithIA(gameController.getIAObjects());
+
             waveA = waveA.Next;
         }
     }
-
-    float lastTime = 0;
-    void CheckInput()
-    {
-        if (Time.time - lastTime > 1)
-        {
-            lastTime = Time.time;           
-            Vector3 pos = new Vector3(Random.Range(-20f, 20f), Random.Range(-10f, 10f), 0);
-            Wave wave = (Instantiate(wavePrefab, pos, Quaternion.identity) as GameObject).GetComponent<Wave>();
-            wave.speed = Random.Range(0.5f, 1.5f);
-            wave.maxRadius = wave.speed * 10;
-            wave.name = "Wave" + activeWaves.Count;
-            wave.SetWaveController(this);
-        }
-    }
-
+    
     public LinkedListNode<Wave> AddWave(Wave wave)
     {
         return activeWaves.AddFirst(wave);

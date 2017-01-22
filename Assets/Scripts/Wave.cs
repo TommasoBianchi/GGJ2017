@@ -264,6 +264,34 @@ public class Wave : MonoBehaviour {
         //}
     }
 
+    public void CheckCollisionWithIA(IA[] IAObjects)
+    {
+        float epsilon = 0.3f;
+        float maxDistance = currentRadius + epsilon;
+
+        for (int i = 0; i < IAObjects.Length; i++)
+        {
+            Vector3 playerPosition = IAObjects[i].transform.position;
+
+            Vector3[] thisPoints = positions;
+
+            float sqrDistance = SqrDistanceBetweenVectors2D(center, playerPosition);
+            if (sqrDistance < maxDistance * maxDistance)
+            {
+                for (int j = 0; j < positions.Length; j++)
+                {
+                    if (activeVertices[j] == false) continue;
+                    sqrDistance = SqrDistanceBetweenVectors2D(positions[j], playerPosition);
+                    if (sqrDistance < epsilon * epsilon)
+                    {
+                        IAObjects[i].Die();
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
     float SqrDistanceBetweenVectors2D(Vector3 a, Vector3 b)
     {
         return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);

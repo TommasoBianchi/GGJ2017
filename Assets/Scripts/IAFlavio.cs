@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IAFlavio : IA {
 
-    protected override Direction Decide(WaveInfo[] waves)
+    protected override Direction Decide(WaveInfo[] waves, Vector3 playerPosition)
     {
         foreach (WaveInfo wave in waves)
         {

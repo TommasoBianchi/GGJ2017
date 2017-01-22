@@ -40,10 +40,17 @@ public class IA : MonoBehaviour {
                 gameObject.transform.RotateAround(transform.position, Vector3.back, (turningSpeed * Time.deltaTime));
                 break;
             default:
+                if ((transform.position - player.transform.position).sqrMagnitude > 2500)
+                    gameObject.transform.rotation = Quaternion.LookRotation(Vector3.forward, player.transform.position - transform.position);
                 break;
         }
 
         gameObject.transform.position += transform.up * speed * Time.deltaTime;
+    }
+
+    public void Die()
+    {
+        gameObject.SetActive(false);
     }
 
     protected virtual Direction Decide(WaveInfo[] waves, Vector3 playerPosition)
