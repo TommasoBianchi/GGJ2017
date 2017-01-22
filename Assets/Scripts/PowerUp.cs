@@ -48,6 +48,7 @@ public class PowerUp : MonoBehaviour {
                 player.hasShield = true;
                 Used = true;
                 player.shield.SetActive(true);
+                player.shield.GetComponent<Animator>().SetBool("ShieldActive", true);
                 player.audioController.Play(AudioController.SfxType.Bubble);
                 break;
             case PowerUpType.Waves:
@@ -72,6 +73,7 @@ public class PowerUp : MonoBehaviour {
             case PowerUpType.Shield:
                 player.hasShield = false;
                 player.shield.SetActive(false);
+                player.shield.GetComponent<Animator>().SetBool("ShieldActive", false);
                 break;
             case PowerUpType.Waves:
                 break;
