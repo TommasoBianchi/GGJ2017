@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class IA : MonoBehaviour {
 
+    public float speed;
+    public float turningSpeed;
+
     protected enum Direction
     {
         RotateLeft,
@@ -25,7 +28,21 @@ public class IA : MonoBehaviour {
         {
             waveInfo[i] = waves[i].GetInfo();
         }
-	}
+
+        switch (Decide(waveInfo))
+        {
+            case Direction.RotateLeft:
+                gameObject.transform.RotateAround(transform.position, Vector3.back, -(turningSpeed * Time.deltaTime));
+                break;
+            case Direction.RotateRight:
+                gameObject.transform.RotateAround(transform.position, Vector3.back, (turningSpeed * Time.deltaTime));
+                break;
+            default:
+                break;
+        }
+
+        gameObject.transform.position += transform.up * speed * Time.deltaTime;
+    }
 
     protected virtual Direction Decide(WaveInfo[] waves)
     {
