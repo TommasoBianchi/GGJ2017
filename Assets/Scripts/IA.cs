@@ -23,7 +23,7 @@ public class IA : MonoBehaviour {
 
     protected virtual Direction Decide(WaveInfo[] waves)
     {
-        return false;
+        return Direction.GoForward;
     }
 
     protected struct WaveInfo
