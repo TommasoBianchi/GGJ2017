@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour {
 
     public GameObject[] obstaclesPrefabs;
     public GameObject[] IAPrefabs;
+    public GameObject GameTutorial;
     public GameObject rockPrefab;
     public GameObject powerUpShield;
     public GameObject powerUpSpeed;
@@ -28,14 +29,19 @@ public class GameController : MonoBehaviour {
     private bool canInstantiate = true;
     private float timeToSpawnAWave = 2;
     private WaveController waveController;
+    private bool Go = false;
+
 
     private void Start()
     {
         waveController = FindObjectOfType<WaveController>();
-
-        SpawnWaterlilies();
-        SpawnPowerUp();
-        SpawnIA();
+    }
+    
+    private void StartGame()
+    {        
+            SpawnWaterlilies();
+            SpawnPowerUp();
+            SpawnIA();
     }
 
     private void SpawnWaterlilies()
@@ -195,6 +201,13 @@ public class GameController : MonoBehaviour {
 
     private void Update()
     {
+        if (Input.GetKeyDown("space") && !Go) {
+            Go = true;
+            GameTutorial.SetActive(false);
+            StartGame();
+        }
+        if (!Go)
+            return;
         for (int i = 0; i < waterlilies.Count; i++)
         {
             if (player.transform.position.x - waterlilies[i].transform.position.x > maxDistance)
