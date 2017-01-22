@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
-    public GameObject waterlily;
+    public GameObject[] obstaclesPrefabs;
+    public GameObject rockPrefab;
     public GameObject powerUpShield;
     public GameObject powerUpSpeed;
     public GameObject powerUpWaterlily;
@@ -61,7 +62,7 @@ public class GameController : MonoBehaviour {
             {
                 Vector3 Position = new Vector3(randomPosX, randomPosY, 0);
                 Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0, 360f));
-                waterlilies.Add(Instantiate(waterlily, Position, randomRotation));
+                waterlilies.Add(Instantiate(obstaclesPrefabs[Random.Range(0, obstaclesPrefabs.Length)], Position, randomRotation));
                 waterlilies[waterlilies.Count - 1].GetComponent<Animator>().SetFloat("Speed", Random.Range(0.2f, 2f));
             }
             canInstantiate = true;
@@ -168,6 +169,8 @@ public class GameController : MonoBehaviour {
                 waterlilies[i].GetComponent<Transform>().position = new Vector3(waterlilies[i].GetComponent<Transform>().position.x, waterlilies[i].GetComponent<Transform>().position.y - maxDistance * 2, 0);
                 waterliliesPos[i] = new Vector2(waterliliesPos[i].x, waterliliesPos[i].y - maxDistance * 2);
             }
+
+            waterlilies[i].GetComponent<Collider2D>().enabled = waterlilies[i].GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Idle");
         }
 
         for (int i = 0; i < powerUpNumber; i++)
@@ -207,6 +210,10 @@ public class GameController : MonoBehaviour {
         Vector3 direction = player.transform.TransformDirection(Vector3.up) * 15;
         float waveSpeed = Random.Range(0.5f, 2f);
         float maxRadius = (3f - waveSpeed) * 5;
+        Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0, 360f));
+        GameObject rock = Instantiate(rockPrefab, player.transform.position + offset, randomRotation) as GameObject;
+        Animator rockAnimator = rock.GetComponent<Animator>();
+
         waveController.SpawnWave(player.transform.position + direction, waveSpeed, maxRadius);
         timeToSpawnAWave = Time.time + Random.Range(1f, 2.5f);
     }
@@ -215,7 +222,7 @@ public class GameController : MonoBehaviour {
     public void SpawnWaterlily(Vector3 pos)
     {
         Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0, 360f));
-        GameObject waterlilyObj = Instantiate(waterlily, player.transform.position, randomRotation) as GameObject;
+        GameObject waterlilyObj = Instantiate(obstaclesPrefabs[Random.Range(0, obstaclesPrefabs.Length)], player.transform.position, randomRotation) as GameObject;
         waterlilies.Add(waterlilyObj);
         waterliliesPos.Add(waterlilyObj.transform.position);        
     }

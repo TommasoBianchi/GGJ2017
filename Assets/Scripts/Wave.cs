@@ -9,6 +9,9 @@ public class Wave : MonoBehaviour {
     public float maxRadius = 10;
     public float speed = 1;
 
+    [HideInInspector]
+    public System.Func<bool> canStartSimulateWave;
+
     float currentRadius;
     WaveController waveController;
     LinkedListNode<Wave> waveControllerNode;
@@ -17,11 +20,17 @@ public class Wave : MonoBehaviour {
     List<LineRenderer> lineRenderers = new List<LineRenderer>();
     Vector3 center;
     bool canHitPlayer = true;
+    bool simulateWave = false;
 
     const int numberOfPoints = 1000;
     const int minNumberOfPointsForLine = 50;
 
-	void Start () {
+    private void Start()
+    {
+        
+    }
+
+    void StartCircle () {
         currentRadius = startingRadius;
         lineRenderers.Add(GetComponent<LineRenderer>());
         center = transform.position;
@@ -31,21 +40,31 @@ public class Wave : MonoBehaviour {
             activeVertices[i] = true;
         }
 
+        simulateWave = true;
+
         Generate();
 	}
 	
 	void Update () {
-        Move(Time.deltaTime);
+        if (simulateWave)
+        {
+            Move(Time.deltaTime);
 
-        if (currentRadius > maxRadius)
-            Die();
+            if (currentRadius > maxRadius)
+                Die();
 
-        if (activeVertices[0] == false)
-            activeVertices[activeVertices.Length - 1] = activeVertices[0];
+            if (activeVertices[0] == false)
+                activeVertices[activeVertices.Length - 1] = activeVertices[0];
+            else
+                activeVertices[0] = activeVertices[activeVertices.Length - 1];
+
+            Generate();
+        }
         else
-            activeVertices[0] = activeVertices[activeVertices.Length - 1];
-
-        Generate();
+        {
+            if (canStartSimulateWave())
+                StartCircle();
+        }
 	}
 
     void Move(float deltaTime)
