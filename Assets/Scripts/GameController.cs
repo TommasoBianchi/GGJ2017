@@ -104,7 +104,6 @@ public class GameController : MonoBehaviour {
                 {
                     canInstantiate = false;
                     j = i;
-                    i--;
                 }
             }
 
@@ -178,23 +177,23 @@ public class GameController : MonoBehaviour {
         {
             if (player.transform.position.x - powerUps[i].transform.position.x > maxDistance)
             {
-                powerUps[i].GetComponent<Transform>().position = new Vector3(player.GetComponent<Transform>().position.x + maxDistance * 2, powerUps[i].GetComponent<Transform>().position.y, 0);
-                powerUpPos[i] = new Vector2(player.GetComponent<Transform>().position.x + maxDistance * 2, powerUps[i].GetComponent<Transform>().position.y);
+                powerUps[i].GetComponent<Transform>().position = new Vector3(powerUps[i].GetComponent<Transform>().position.x + maxDistance * 2, powerUps[i].GetComponent<Transform>().position.y, 0);
+                powerUpPos[i] = new Vector2(powerUps[i].GetComponent<Transform>().position.x + maxDistance * 2, powerUps[i].GetComponent<Transform>().position.y);
             }
             if (player.transform.position.x - powerUps[i].transform.position.x < -maxDistance)
             {
-                powerUps[i].GetComponent<Transform>().position = new Vector3(player.GetComponent<Transform>().position.x - maxDistance * 2, powerUps[i].GetComponent<Transform>().position.y, 0);
-                powerUpPos[i] = new Vector2(player.GetComponent<Transform>().position.x - maxDistance * 2, powerUps[i].GetComponent<Transform>().position.y);
+                powerUps[i].GetComponent<Transform>().position = new Vector3(powerUps[i].GetComponent<Transform>().position.x - maxDistance * 2, powerUps[i].GetComponent<Transform>().position.y, 0);
+                powerUpPos[i] = new Vector2(powerUps[i].GetComponent<Transform>().position.x - maxDistance * 2, powerUps[i].GetComponent<Transform>().position.y);
             }                
             if (player.transform.position.y - powerUps[i].transform.position.y > maxDistance)
             {
-                powerUps[i].GetComponent<Transform>().position = new Vector3(powerUps[i].GetComponent<Transform>().position.x, player.GetComponent<Transform>().position.y + maxDistance * 2, 0);
-                powerUpPos[i] = new Vector2(player.GetComponent<Transform>().position.x, powerUps[i].GetComponent<Transform>().position.y + maxDistance * 2);
+                powerUps[i].GetComponent<Transform>().position = new Vector3(powerUps[i].GetComponent<Transform>().position.x, powerUps[i].GetComponent<Transform>().position.y + maxDistance * 2, 0);
+                powerUpPos[i] = new Vector2(powerUps[i].GetComponent<Transform>().position.x, powerUps[i].GetComponent<Transform>().position.y + maxDistance * 2);
             }               
             if (player.transform.position.y - powerUps[i].transform.position.y < -maxDistance)
             {
-                powerUps[i].GetComponent<Transform>().position = new Vector3(powerUps[i].GetComponent<Transform>().position.x, player.GetComponent<Transform>().position.y - maxDistance * 2, 0);
-                powerUpPos[i] = new Vector2(player.GetComponent<Transform>().position.x, powerUps[i].GetComponent<Transform>().position.y - maxDistance * 2);
+                powerUps[i].GetComponent<Transform>().position = new Vector3(powerUps[i].GetComponent<Transform>().position.x, powerUps[i].GetComponent<Transform>().position.y - maxDistance * 2, 0);
+                powerUpPos[i] = new Vector2(powerUps[i].GetComponent<Transform>().position.x, powerUps[i].GetComponent<Transform>().position.y - maxDistance * 2);
             }
                 
         }
