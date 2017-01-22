@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class IAFlavio : IA {
 
+    public enum FavouriteDirection { left_handed, right_handed }
+    FavouriteDirection favouriteDir;
+
+    void Start ()
+    {
+        int r = Random.Range(0, 1);
+        if (r == 0)
+            favouriteDir = FavouriteDirection.left_handed;
+        else
+            favouriteDir = FavouriteDirection.right_handed;
+    }
+
     protected override Direction Decide(WaveInfo[] waves, Vector3 playerPosition)
     {
         foreach (WaveInfo wave in waves)
@@ -16,6 +28,14 @@ public class IAFlavio : IA {
                 if (DangerRadius > 0 && DangerRadius < Mathf.PI/4)
                     return Direction.RotateRight;
             }
+        }
+        int r = Random.Range(0, 1);
+        if (r == 1)
+        {
+            if (favouriteDir == FavouriteDirection.left_handed)
+                return Direction.RotateLeft;
+            if (favouriteDir == FavouriteDirection.right_handed)
+                return Direction.RotateRight;
         }
         return Direction.GoForward;
     }
