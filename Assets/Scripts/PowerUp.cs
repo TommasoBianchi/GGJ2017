@@ -79,6 +79,11 @@ public class PowerUp : MonoBehaviour {
                 break;
             case PowerUpType.Waterlily:
                 break;
-        }        
+        }
+
+        float RandomX = Random.Range(-gameController.maxDistance, gameController.maxDistance);
+        float RandomY = Random.Range(-gameController.maxDistance, gameController.maxDistance);
+        transform.position = new Vector3(RandomX, RandomY, 0);
+        GetComponent<Animator>().SetBool("Active", true);
     }
 }

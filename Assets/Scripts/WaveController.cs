@@ -95,4 +95,9 @@ public class WaveController : MonoBehaviour {
         else
             wave.canStartSimulateWave = canSimulate;
     }
+
+    public Wave[] GetWaves()
+    {
+        return activeWaves.ToArray();
+    }
 }

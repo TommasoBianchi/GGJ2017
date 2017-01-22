@@ -273,4 +273,9 @@ public class Wave : MonoBehaviour {
     {
         this.activeVertices = activeVertices;
     }
+
+    public IA.WaveInfo GetInfo()
+    {
+        return new IA.WaveInfo(center, currentRadius, speed);
+    }
 }

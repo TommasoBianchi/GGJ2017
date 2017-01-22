@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour {
     private List<Vector2> powerUpPos = new List<Vector2>();
     private List<GameObject> powerUps = new List<GameObject>();
     private bool canInstantiate = true;
-    private float timeToSpawnAWave = 5;
+    private float timeToSpawnAWave = 2;
     private WaveController waveController;
 
     private void Start()
@@ -112,7 +112,7 @@ public class GameController : MonoBehaviour {
             if (canInstantiate == true)
             {
                 Vector3 Position = new Vector3(randomPosX, randomPosY, 0);
-                int r = 0;//Random.Range(0, 4);
+                int r = Random.Range(0, 4);
                 switch (r)
                 {
                     case 0:
@@ -209,7 +209,7 @@ public class GameController : MonoBehaviour {
         Vector3 offset = Vector3.zero;
         while(offset.sqrMagnitude < 25)
             offset = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), 0);
-        Vector3 direction = player.transform.TransformDirection(Vector3.up) * 25;
+        Vector3 direction = player.transform.up * 40;
         Vector3 spawnPosition = player.transform.position + offset + direction;
 
         for (int i = 0; i < waterliliesPos.Count; i++)
@@ -226,7 +226,7 @@ public class GameController : MonoBehaviour {
 
         waveController.SpawnWave(spawnPosition, waveSpeed, maxRadius,
             canSimulate: () => rockAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f);
-        timeToSpawnAWave = Time.time + Random.Range(0.2f, 1.5f);
+        timeToSpawnAWave = Time.time + Random.Range(0.05f, 0.6f);
     }
     
     public void SpawnWaterlily(Vector3 pos)
