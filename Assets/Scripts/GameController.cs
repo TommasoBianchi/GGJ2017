@@ -204,11 +204,13 @@ public class GameController : MonoBehaviour {
         Vector3 offset = Vector3.zero;
         while(offset.sqrMagnitude < 25)
             offset = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), 0);
+        Vector3 direction = player.transform.TransformDirection(Vector3.up) * 15;
         float waveSpeed = Random.Range(0.5f, 2f);
         float maxRadius = (3f - waveSpeed) * 5;
-        waveController.SpawnWave(player.transform.position + offset, waveSpeed, maxRadius);
-        timeToSpawnAWave = Time.time + Random.Range(0.5f, 1.5f);
+        waveController.SpawnWave(player.transform.position + direction, waveSpeed, maxRadius);
+        timeToSpawnAWave = Time.time + Random.Range(1f, 2.5f);
     }
+
 
     public void SpawnWaterlily(Vector3 pos)
     {

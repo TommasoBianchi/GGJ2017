@@ -59,7 +59,7 @@ public class WaveController : MonoBehaviour {
     {
         if (Time.time - lastTime > 1)
         {
-            lastTime = Time.time;
+            lastTime = Time.time;           
             Vector3 pos = new Vector3(Random.Range(-20f, 20f), Random.Range(-10f, 10f), 0);
             Wave wave = (Instantiate(wavePrefab, pos, Quaternion.identity) as GameObject).GetComponent<Wave>();
             wave.speed = Random.Range(0.5f, 1.5f);
