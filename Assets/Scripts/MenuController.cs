@@ -19,6 +19,7 @@ public class MenuController : MonoBehaviour {
 	public bool laUso;
 
     bool isDeathPanelVisible = false;
+	int i = 0;
 	
 	// Use this for initialization
 	void Start () {
@@ -26,6 +27,8 @@ public class MenuController : MonoBehaviour {
 		count = 0;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+		Debug.Log(i + "Start");
+		i++;
 		MusicSettings(MusicButton, PlayerPrefs.GetInt("music", 0));
 	}
 	
@@ -34,7 +37,7 @@ public class MenuController : MonoBehaviour {
         if (laUso && !isDeathPanelVisible)
             return;
 
-		if (ClickedOne && Time.time-TimeClick>0.15f) {
+		if (ClickedOne && Time.time-TimeClick>0.2f) {
 			eventSystem.SetSelectedGameObject(buttons[count]);
 			count++;
 			if (count >= buttons.Length)
@@ -66,7 +69,10 @@ public class MenuController : MonoBehaviour {
 
 	public void MusicOnOff () {
 		MusicButton.GetComponent<Image>().sprite = images[1 - PlayerPrefs.GetInt("music")];
+		Debug.Log("Setting music");
 		PlayerPrefs.SetInt("music", 1 - PlayerPrefs.GetInt("music"));
+		PlayerPrefs.Save();
+		Debug.Log(PlayerPrefs.GetInt("music"));
 		if (PlayerPrefs.GetInt("music") == 0)
 			audioSource.GetComponent<AudioSource>().mute = false;
 		else
@@ -74,6 +80,7 @@ public class MenuController : MonoBehaviour {
 	}
 	private void MusicSettings (GameObject musics, int i) {
 		musics.GetComponent<Image>().sprite = images[i];
+		Debug.Log(i + "Music Settings: " + PlayerPrefs.GetInt("music"));
 		if (PlayerPrefs.GetInt("music") == 0)
 			audioSource.GetComponent<AudioSource>().mute = false;
 		else
@@ -81,6 +88,7 @@ public class MenuController : MonoBehaviour {
 	}
 
 	public void loadScene (int i) {
+		Debug.Log(PlayerPrefs.GetInt("music"));
 		SceneManager.LoadScene(i);
 	}
 	public void ExitGame () {
