@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class WaveController : MonoBehaviour {
 
@@ -23,7 +24,7 @@ public class WaveController : MonoBehaviour {
 
     void CheckCollisions()
     {
-        Vector2[] waterliliesPos = gameController.getWaterliliesPos().ToArray();
+        GameObject[] waterlilies = gameController.getWaterlilies();
 
         LinkedListNode<Wave> waveA = activeWaves.First;
         while (waveA != null)
@@ -45,7 +46,8 @@ public class WaveController : MonoBehaviour {
             }
 
             // Check collisions with waterlilies
-            waveA.Value.CheckCollisionsWithWaterlilies(waterliliesPos, 1.4f);
+            waveA.Value.CheckCollisionsWithWaterlilies(waterlilies.Select(w => w.transform.position).ToArray(),
+                waterlilies.Select(w => 1.4f * w.transform.localScale.x / 4f).ToArray());
 
             // Check collisions with the player
             waveA.Value.CheckCollisionWithPlayer(player);
@@ -59,7 +61,7 @@ public class WaveController : MonoBehaviour {
     {
         if (Time.time - lastTime > 1)
         {
-            lastTime = Time.time;
+            lastTime = Time.time;           
             Vector3 pos = new Vector3(Random.Range(-20f, 20f), Random.Range(-10f, 10f), 0);
             Wave wave = (Instantiate(wavePrefab, pos, Quaternion.identity) as GameObject).GetComponent<Wave>();
             wave.speed = Random.Range(0.5f, 1.5f);
@@ -79,7 +81,7 @@ public class WaveController : MonoBehaviour {
         activeWaves.Remove(wave);
     }
 
-    public void SpawnWave(Vector3 position, float speed, float maxRadius, float startingRadius = 0.1f)
+    public void SpawnWave(Vector3 position, float speed, float maxRadius, float startingRadius = 0.1f, System.Func<bool> canSimulate = null)
     {
         Wave wavePrefabComponent = wavePrefab.GetComponent<Wave>();
         wavePrefabComponent.speed = speed;
@@ -88,5 +90,9 @@ public class WaveController : MonoBehaviour {
         Wave wave = (Instantiate(wavePrefab, position, Quaternion.identity) as GameObject).GetComponent<Wave>();
         wave.name = "Wave" + activeWaves.Count;
         wave.SetWaveController(this);
+        if (canSimulate == null)
+            wave.canStartSimulateWave = () => true;
+        else
+            wave.canStartSimulateWave = canSimulate;
     }
 }

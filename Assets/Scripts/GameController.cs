@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GameController : MonoBehaviour {
 
     public GameObject[] obstaclesPrefabs;
+    public GameObject rockPrefab;
     public GameObject powerUpShield;
     public GameObject powerUpSpeed;
     public GameObject powerUpWaterlily;
@@ -62,6 +64,7 @@ public class GameController : MonoBehaviour {
                 Vector3 Position = new Vector3(randomPosX, randomPosY, 0);
                 Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0, 360f));
                 waterlilies.Add(Instantiate(obstaclesPrefabs[Random.Range(0, obstaclesPrefabs.Length)], Position, randomRotation));
+                waterlilies[waterlilies.Count - 1].transform.localScale = Vector3.one * Random.Range(3f, 6f);
                 waterlilies[waterlilies.Count - 1].GetComponent<Animator>().SetFloat("Speed", Random.Range(0.2f, 2f));
             }
             canInstantiate = true;
@@ -103,7 +106,6 @@ public class GameController : MonoBehaviour {
                 {
                     canInstantiate = false;
                     j = i;
-                    i--;
                 }
             }
 
@@ -126,6 +128,7 @@ public class GameController : MonoBehaviour {
                         powerUps.Add(Instantiate(powerUpWaves, Position, powerUpWaves.transform.rotation));
                         break;
                 }
+                powerUps[powerUps.Count - 1].GetComponent<Animator>().SetBool("Active", true);
             }
             else
                 i--;
@@ -138,9 +141,9 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    public List<Vector2> getWaterliliesPos()
+    public GameObject[] getWaterlilies()
     {
-        return waterliliesPos;
+        return waterlilies.ToArray();
     }
 
     private void Update()
@@ -176,23 +179,23 @@ public class GameController : MonoBehaviour {
         {
             if (player.transform.position.x - powerUps[i].transform.position.x > maxDistance)
             {
-                powerUps[i].GetComponent<Transform>().position = new Vector3(player.GetComponent<Transform>().position.x + maxDistance * 2, powerUps[i].GetComponent<Transform>().position.y, 0);
-                powerUpPos[i] = new Vector2(player.GetComponent<Transform>().position.x + maxDistance * 2, powerUps[i].GetComponent<Transform>().position.y);
+                powerUps[i].GetComponent<Transform>().position = new Vector3(powerUps[i].GetComponent<Transform>().position.x + maxDistance * 2, powerUps[i].GetComponent<Transform>().position.y, 0);
+                powerUpPos[i] = new Vector2(powerUps[i].GetComponent<Transform>().position.x + maxDistance * 2, powerUps[i].GetComponent<Transform>().position.y);
             }
             if (player.transform.position.x - powerUps[i].transform.position.x < -maxDistance)
             {
-                powerUps[i].GetComponent<Transform>().position = new Vector3(player.GetComponent<Transform>().position.x - maxDistance * 2, powerUps[i].GetComponent<Transform>().position.y, 0);
-                powerUpPos[i] = new Vector2(player.GetComponent<Transform>().position.x - maxDistance * 2, powerUps[i].GetComponent<Transform>().position.y);
+                powerUps[i].GetComponent<Transform>().position = new Vector3(powerUps[i].GetComponent<Transform>().position.x - maxDistance * 2, powerUps[i].GetComponent<Transform>().position.y, 0);
+                powerUpPos[i] = new Vector2(powerUps[i].GetComponent<Transform>().position.x - maxDistance * 2, powerUps[i].GetComponent<Transform>().position.y);
             }                
             if (player.transform.position.y - powerUps[i].transform.position.y > maxDistance)
             {
-                powerUps[i].GetComponent<Transform>().position = new Vector3(powerUps[i].GetComponent<Transform>().position.x, player.GetComponent<Transform>().position.y + maxDistance * 2, 0);
-                powerUpPos[i] = new Vector2(player.GetComponent<Transform>().position.x, powerUps[i].GetComponent<Transform>().position.y + maxDistance * 2);
+                powerUps[i].GetComponent<Transform>().position = new Vector3(powerUps[i].GetComponent<Transform>().position.x, powerUps[i].GetComponent<Transform>().position.y + maxDistance * 2, 0);
+                powerUpPos[i] = new Vector2(powerUps[i].GetComponent<Transform>().position.x, powerUps[i].GetComponent<Transform>().position.y + maxDistance * 2);
             }               
             if (player.transform.position.y - powerUps[i].transform.position.y < -maxDistance)
             {
-                powerUps[i].GetComponent<Transform>().position = new Vector3(powerUps[i].GetComponent<Transform>().position.x, player.GetComponent<Transform>().position.y - maxDistance * 2, 0);
-                powerUpPos[i] = new Vector2(player.GetComponent<Transform>().position.x, powerUps[i].GetComponent<Transform>().position.y - maxDistance * 2);
+                powerUps[i].GetComponent<Transform>().position = new Vector3(powerUps[i].GetComponent<Transform>().position.x, powerUps[i].GetComponent<Transform>().position.y - maxDistance * 2, 0);
+                powerUpPos[i] = new Vector2(powerUps[i].GetComponent<Transform>().position.x, powerUps[i].GetComponent<Transform>().position.y - maxDistance * 2);
             }
                 
         }
@@ -206,12 +209,26 @@ public class GameController : MonoBehaviour {
         Vector3 offset = Vector3.zero;
         while(offset.sqrMagnitude < 25)
             offset = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), 0);
+        Vector3 direction = player.transform.TransformDirection(Vector3.up) * 25;
+        Vector3 spawnPosition = player.transform.position + offset + direction;
+
+        for (int i = 0; i < waterliliesPos.Count; i++)
+        {
+            if (((Vector3)waterliliesPos[i] - spawnPosition).sqrMagnitude < 0.5f)
+                return;
+        }
+
         float waveSpeed = Random.Range(0.5f, 2f);
         float maxRadius = (3f - waveSpeed) * 5;
-        waveController.SpawnWave(player.transform.position + offset, waveSpeed, maxRadius);
-        timeToSpawnAWave = Time.time + Random.Range(0.5f, 1.5f);
-    }
+        Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0, 360f));
+        GameObject rock = Instantiate(rockPrefab, spawnPosition, randomRotation) as GameObject;
+        Animator rockAnimator = rock.GetComponent<Animator>();
 
+        waveController.SpawnWave(spawnPosition, waveSpeed, maxRadius,
+            canSimulate: () => rockAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f);
+        timeToSpawnAWave = Time.time + Random.Range(0.2f, 1.5f);
+    }
+    
     public void SpawnWaterlily(Vector3 pos)
     {
         Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0, 360f));

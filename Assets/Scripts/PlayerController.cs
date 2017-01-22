@@ -66,11 +66,15 @@ public class PlayerController : MonoBehaviour {
         {
 			audioController.Play(AudioController.SfxType.PowerUpPickup);
             currentPowerUp = other.GetComponent<PowerUp>();
+            other.GetComponent<Animator>().SetBool("Active", false);
+            other.GetComponent<Collider2D>().enabled = false;
+
             powerupIcon.sprite = currentPowerUp.icon;
             powerupIcon.GetComponentInParent<Animator>().SetBool("PanelUp", true);
-            float RandomX = Random.Range(-20000, 20000);
-            float RandomY = Random.Range(-20000, 20000);
-            other.gameObject.transform.position = new Vector3(RandomX, RandomY, 0);
+
+            //float RandomX = Random.Range(-20000, 20000);
+            //float RandomY = Random.Range(-20000, 20000);
+            //other.gameObject.transform.position = new Vector3(RandomX, RandomY, 0);
         }
     }
 
